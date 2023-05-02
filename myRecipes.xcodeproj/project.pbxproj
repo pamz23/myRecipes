@@ -76,9 +76,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20CB40812A00F40200A3C817 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8D4656832A00E1960027F9B0 /* Main.storyboard */,
+				8D4656882A00E1980027F9B0 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		20CB40822A00F4E500A3C817 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				8D4656812A00E1960027F9B0 /* ViewController.swift */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
 		8D4656712A00E1960027F9B0 = {
 			isa = PBXGroup;
 			children = (
+				20CB40822A00F4E500A3C817 /* Control */,
+				20CB40812A00F40200A3C817 /* View */,
 				8D46567C2A00E1960027F9B0 /* myRecipes */,
 				8D4656932A00E1980027F9B0 /* myRecipesTests */,
 				8D46569D2A00E1980027F9B0 /* myRecipesUITests */,
@@ -101,10 +120,7 @@
 			children = (
 				8D46567D2A00E1960027F9B0 /* AppDelegate.swift */,
 				8D46567F2A00E1960027F9B0 /* SceneDelegate.swift */,
-				8D4656812A00E1960027F9B0 /* ViewController.swift */,
-				8D4656832A00E1960027F9B0 /* Main.storyboard */,
 				8D4656862A00E1980027F9B0 /* Assets.xcassets */,
-				8D4656882A00E1980027F9B0 /* LaunchScreen.storyboard */,
 				8D46568B2A00E1980027F9B0 /* Info.plist */,
 			);
 			path = myRecipes;
