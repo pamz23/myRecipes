@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4398111B2A0A000D009CF6DF /* RecipeListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4398111A2A0A000D009CF6DF /* RecipeListingViewController.swift */; };
+		4398111D2A0A023F009CF6DF /* IndividualRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4398111C2A0A023F009CF6DF /* IndividualRecipeViewController.swift */; };
+		4398111F2A0A0538009CF6DF /* GroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4398111E2A0A0538009CF6DF /* GroceryListViewController.swift */; };
 		4D3180AA2A09DD80005E7EB3 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3180A92A09DD80005E7EB3 /* LogInViewController.swift */; };
 		4D3180AC2A09E0CE005E7EB3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3180AB2A09E0CE005E7EB3 /* SignUpViewController.swift */; };
 		8D46567E2A00E1960027F9B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D46567D2A00E1960027F9B0 /* AppDelegate.swift */; };
@@ -38,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4398111A2A0A000D009CF6DF /* RecipeListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListingViewController.swift; sourceTree = "<group>"; };
+		4398111C2A0A023F009CF6DF /* IndividualRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualRecipeViewController.swift; sourceTree = "<group>"; };
+		4398111E2A0A0538009CF6DF /* GroceryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListViewController.swift; sourceTree = "<group>"; };
 		4D3180A92A09DD80005E7EB3 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		4D3180AB2A09E0CE005E7EB3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8D46567A2A00E1960027F9B0 /* myRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,7 +100,10 @@
 			children = (
 				8D4656812A00E1960027F9B0 /* ViewController.swift */,
 				4D3180A92A09DD80005E7EB3 /* LogInViewController.swift */,
+				4398111A2A0A000D009CF6DF /* RecipeListingViewController.swift */,
 				4D3180AB2A09E0CE005E7EB3 /* SignUpViewController.swift */,
+				4398111E2A0A0538009CF6DF /* GroceryListViewController.swift */,
+				4398111C2A0A023F009CF6DF /* IndividualRecipeViewController.swift */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -280,9 +289,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4398111F2A0A0538009CF6DF /* GroceryListViewController.swift in Sources */,
 				4D3180AA2A09DD80005E7EB3 /* LogInViewController.swift in Sources */,
 				8D4656822A00E1960027F9B0 /* ViewController.swift in Sources */,
+				4398111D2A0A023F009CF6DF /* IndividualRecipeViewController.swift in Sources */,
 				8D46567E2A00E1960027F9B0 /* AppDelegate.swift in Sources */,
+				4398111B2A0A000D009CF6DF /* RecipeListingViewController.swift in Sources */,
 				8D4656802A00E1960027F9B0 /* SceneDelegate.swift in Sources */,
 				4D3180AC2A09E0CE005E7EB3 /* SignUpViewController.swift in Sources */,
 			);

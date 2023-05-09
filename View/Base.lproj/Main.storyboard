@@ -127,6 +127,7 @@
                                 <buttonConfiguration key="configuration" style="tinted" title="Sign Up"/>
                                 <connections>
                                     <action selector="signUp:" destination="M2c-i5-Tla" eventType="touchUpInside" id="K6t-9o-T8B"/>
+                                    <segue destination="JGg-cr-cJ1" kind="show" id="f3N-va-PmF"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalCompressionResistancePriority="751" restorationIdentifier="yourName" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nHB-64-NqQ">
@@ -218,6 +219,16 @@
                                     <action selector="signIn:" destination="XQQ-0Z-1vs" eventType="touchUpInside" id="2KO-gd-piu"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="signIn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Lt-A9-Ugl">
+                                <rect key="frame" x="25" y="423" width="343" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Sign in"/>
+                                <connections>
+                                    <action selector="signIn:" destination="XQQ-0Z-1vs" eventType="touchUpInside" id="ErV-kE-cXs"/>
+                                    <segue destination="JGg-cr-cJ1" kind="show" id="pxD-SY-TrY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XYj-gn-CgC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -275,8 +286,17 @@
                         <viewLayoutGuide key="safeArea" id="Ycn-oX-ch7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="lU9-Vs-5VF">
+                        <barButtonItem key="rightBarButtonItem" image="cart" catalog="system" id="Lmi-Aq-1UF">
+                            <connections>
+                                <action selector="cartButton:" destination="WCb-3z-cPk" id="BwG-0L-bbf"/>
+                                <segue destination="voE-pJ-GHY" kind="show" id="Olm-dp-8KA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dt3-ha-pmS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="WCb-3z-cPk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1688" y="4"/>
         </scene>
@@ -287,11 +307,29 @@
                     <view key="view" contentMode="scaleToFill" id="xFk-OC-Hn3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VGu-WT-GrP">
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="Qac-sB-lBF">
+                                        <barButtonItem key="rightBarButtonItem" image="cart" catalog="system" id="B4A-D4-aX4">
+                                            <connections>
+                                                <action selector="cartButton:" destination="vyT-eh-bIk" id="Dd3-VH-J7l"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Hfo-H9-FMI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="si1-BL-fHx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="vyT-eh-bIk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2537" y="4"/>
         </scene>
@@ -335,10 +373,11 @@
                         <viewLayoutGuide key="safeArea" id="l3y-jT-DHS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="rWD-Ql-BCG"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9b-5N-1rh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4294" y="4"/>
+            <point key="canvasLocation" x="2537" y="749"/>
         </scene>
         <!--RecipeReviewViewController-->
         <scene sceneID="dRs-4G-EJD">
@@ -371,7 +410,11 @@
             <point key="canvasLocation" x="5050" y="4"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="f3N-va-PmF"/>
+    </inferredMetricsTieBreakers>
     <resources>
+        <image name="cart" catalog="system" width="128" height="102"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
