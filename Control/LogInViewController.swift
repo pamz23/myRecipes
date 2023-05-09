@@ -10,7 +10,7 @@ import Foundation
 
 class LogInViewController: UIViewController {
     
-    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var signIn: UIButton!
     
@@ -18,6 +18,10 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func signIn(_ sender: Any) {
+    }
+    
     
     
 }
