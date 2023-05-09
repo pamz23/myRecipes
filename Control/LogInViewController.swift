@@ -21,7 +21,5 @@ class LoginViewController: UIViewController {
     
     @IBAction func signIn(_ sender: Any) {
     }
-    
-    
-    
+
 }
