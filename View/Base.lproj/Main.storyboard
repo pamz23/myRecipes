@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="-1021" y="4"/>
         </scene>
-        <!--LoginViewController-->
+        <!--ViewController-->
         <scene sceneID="Wbd-hf-ull">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" title="LoginViewController" id="SAk-jf-fbh" customClass="LoginViewController" customModule="myRecipes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" title="ViewController" id="SAk-jf-fbh" customClass="ViewController" customModule="myRecipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g9s-GA-ldp">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,7 +52,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Log in"/>
                                 <connections>
-                                    <segue destination="XQQ-0Z-1vs" kind="show" id="Z5t-7f-A5c"/>
+                                    <segue destination="XQQ-0Z-1vs" kind="show" id="CkD-n5-YJP"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New here?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZ9-u9-duM">
@@ -66,7 +66,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Sign up now"/>
                                 <connections>
-                                    <segue destination="M2c-i5-Tla" kind="show" id="rq7-FX-iHK"/>
+                                    <segue destination="M2c-i5-Tla" kind="show" id="nAV-hT-WxY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -95,10 +95,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aN8-Us-6Ca"/>
-                    <connections>
-                        <outlet property="logIn" destination="l9r-Ac-r0O" id="5aB-3b-40J"/>
-                        <outlet property="signUpNow" destination="rbS-2P-n0N" id="YNd-Bb-GaX"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qKJ-ge-Qkg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
