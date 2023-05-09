@@ -29,7 +29,7 @@
         <!--LoginViewController-->
         <scene sceneID="Wbd-hf-ull">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" title="LoginViewController" id="SAk-jf-fbh" customClass="ViewController" customModule="myRecipes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" title="LoginViewController" id="SAk-jf-fbh" customClass="LoginViewController" customModule="myRecipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g9s-GA-ldp">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -189,7 +189,7 @@
         <!--SignInViewController-->
         <scene sceneID="74C-p1-L1F">
             <objects>
-                <viewController storyboardIdentifier="SignInViewController" title="SignInViewController" id="XQQ-0Z-1vs" customClass="LogInViewController" customModule="myRecipes" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInViewController" title="SignInViewController" id="XQQ-0Z-1vs" customClass="SignInViewController" customModule="myRecipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FPD-Tx-71Q">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D3180AA2A09DD80005E7EB3 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3180A92A09DD80005E7EB3 /* LogInViewController.swift */; };
+		4D3180AA2A09DD80005E7EB3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3180A92A09DD80005E7EB3 /* LoginViewController.swift */; };
 		4D3180AC2A09E0CE005E7EB3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3180AB2A09E0CE005E7EB3 /* SignUpViewController.swift */; };
 		8D46567E2A00E1960027F9B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D46567D2A00E1960027F9B0 /* AppDelegate.swift */; };
 		8D4656802A00E1960027F9B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D46567F2A00E1960027F9B0 /* SceneDelegate.swift */; };
@@ -18,6 +18,7 @@
 		8D4656952A00E1980027F9B0 /* myRecipesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4656942A00E1980027F9B0 /* myRecipesTests.swift */; };
 		8D46569F2A00E1980027F9B0 /* myRecipesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D46569E2A00E1980027F9B0 /* myRecipesUITests.swift */; };
 		8D4656A12A00E1980027F9B0 /* myRecipesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4656A02A00E1980027F9B0 /* myRecipesUITestsLaunchTests.swift */; };
+		8DA5652E2A0A017700994C39 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5652D2A0A017700994C39 /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4D3180A92A09DD80005E7EB3 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		4D3180A92A09DD80005E7EB3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4D3180AB2A09E0CE005E7EB3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8D46567A2A00E1960027F9B0 /* myRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D46567D2A00E1960027F9B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +54,7 @@
 		8D46569A2A00E1980027F9B0 /* myRecipesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myRecipesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D46569E2A00E1980027F9B0 /* myRecipesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myRecipesUITests.swift; sourceTree = "<group>"; };
 		8D4656A02A00E1980027F9B0 /* myRecipesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myRecipesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8DA5652D2A0A017700994C39 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,8 +95,9 @@
 			isa = PBXGroup;
 			children = (
 				8D4656812A00E1960027F9B0 /* ViewController.swift */,
-				4D3180A92A09DD80005E7EB3 /* LogInViewController.swift */,
+				4D3180A92A09DD80005E7EB3 /* LoginViewController.swift */,
 				4D3180AB2A09E0CE005E7EB3 /* SignUpViewController.swift */,
+				8DA5652D2A0A017700994C39 /* SignInViewController.swift */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -280,8 +283,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D3180AA2A09DD80005E7EB3 /* LogInViewController.swift in Sources */,
+				4D3180AA2A09DD80005E7EB3 /* LoginViewController.swift in Sources */,
 				8D4656822A00E1960027F9B0 /* ViewController.swift in Sources */,
+				8DA5652E2A0A017700994C39 /* SignInViewController.swift in Sources */,
 				8D46567E2A00E1960027F9B0 /* AppDelegate.swift in Sources */,
 				8D4656802A00E1960027F9B0 /* SceneDelegate.swift in Sources */,
 				4D3180AC2A09E0CE005E7EB3 /* SignUpViewController.swift in Sources */,
