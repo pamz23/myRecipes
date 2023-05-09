@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-class LogInViewController: UIViewController {
+class SignInViewController: UIViewController {
     
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
