@@ -1,10 +1,12 @@
 //
-//  ViewController.swift
+//  RecipeListingViewController.swift
 //  myRecipes
 //
-//  Created by Pamela Lim on 2/5/23.
+//  Created by Thesya Evania on 9/5/2023.
 //
-class ViewController: UIViewController {
+
+import UIKit
+class RecipeListingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
