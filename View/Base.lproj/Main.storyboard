@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mnq-0P-AmR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mnq-0P-AmR">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -212,6 +213,7 @@
                                 <buttonConfiguration key="configuration" style="tinted" title="Sign in"/>
                                 <connections>
                                     <action selector="signIn:" destination="XQQ-0Z-1vs" eventType="touchUpInside" id="2KO-gd-piu"/>
+                                    <segue destination="JGg-cr-cJ1" kind="show" id="vi9-7N-Qko"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -334,6 +336,7 @@
                         <viewLayoutGuide key="safeArea" id="Ycn-oX-ch7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="VfJ-N8-1iY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dt3-ha-pmS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
