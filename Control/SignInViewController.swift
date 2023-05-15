@@ -57,6 +57,10 @@ class SignInViewController: UIViewController {
         let validPassword = "mypassword"
         
         return username == validUsername && email == validEmail && password == validPassword
+        
+     /*   // Make a request to authentication service or backend API for validation
+        Dictionary().authenticate(username: username, password: password) { result in
+            // Hide the loading indicator or enable UI    }*/
     }
 
     func showAlert(withTitle title: String, message: String) {
