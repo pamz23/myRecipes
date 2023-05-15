@@ -10,9 +10,9 @@ import Foundation
 
 class SignUpViewController: UIViewController {
     
-    @IBOutlet weak var yourUsername: UITextField!
+    @IBOutlet weak var yourName: UITextField!
     @IBOutlet weak var yourEmail: UITextField!
-    @IBOutlet weak var yourPassword: UITextField!
+    @IBOutlet weak var youPassword: UITextField!
     @IBOutlet weak var signUp: UIButton!
     
     override func viewDidLoad() {
@@ -22,9 +22,9 @@ class SignUpViewController: UIViewController {
     
     @IBAction func signupButtonTapped(_ sender: UIButton) {
         // Check if all fields are filled
-        guard  let username = yourUsername.text,
+        guard  let username = yourName.text,
                let email = yourEmail.text,
-               let password = yourPassword.text,
+               let password = youPassword.text,
                !username.isEmpty,
                !email.isEmpty,
                !password.isEmpty else {

@@ -66,7 +66,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Sign up now"/>
                                 <connections>
-                                    <segue destination="M2c-i5-Tla" kind="show" id="nAV-hT-WxY"/>
+                                    <segue destination="M2c-i5-Tla" kind="show" id="r1j-iD-nju"/>
                                 </connections>
                             </button>
                         </subviews>
