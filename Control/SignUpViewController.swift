@@ -10,9 +10,9 @@ import Foundation
 
 class SignUpViewController: UIViewController {
     
-    @IBOutlet weak var yourName: UITextField!
+    @IBOutlet weak var yourUsername: UITextField!
     @IBOutlet weak var yourEmail: UITextField!
-    @IBOutlet weak var youPassword: UITextField!
+    @IBOutlet weak var yourPassword: UITextField!
     @IBOutlet weak var signUp: UIButton!
     
     override func viewDidLoad() {
@@ -22,10 +22,10 @@ class SignUpViewController: UIViewController {
     
     @IBAction func signupButtonTapped(_ sender: UIButton) {
         // Check if all fields are filled
-        guard  let name = yourName.text,
+        guard  let username = yourUsername.text,
                let email = yourEmail.text,
-               let password = youPassword.text,
-               !name.isEmpty,
+               let password = yourPassword.text,
+               !username.isEmpty,
                !email.isEmpty,
                !password.isEmpty else {
             print("Error, please fill in all the fields")
@@ -33,10 +33,10 @@ class SignUpViewController: UIViewController {
         }
         
         // Perform signup process
-        performSignup(with: name, email: email, password: password)
+        performSignup(with: username, email: email, password: password)
     }
     
-    func performSignup(with name: String, email: String, password: String) {
+    func performSignup(with username: String, email: String, password: String) {
         // Your signup logic here
         // This is where you would typically make an API call to register the user
         
@@ -44,11 +44,4 @@ class SignUpViewController: UIViewController {
         // Show success message
         print("Sign up was successful")
     }
-        
-        func showAlert(with title: String, message: String) {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(okAction)
-            present(alert, animated: true, completion: nil)
-        }
 }

@@ -108,12 +108,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" restorationIdentifier="youEmail" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="your email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fk0-7H-ffK">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" restorationIdentifier="yourEmail" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="your email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fk0-7H-ffK">
                                 <rect key="frame" x="25" y="374" width="343" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" restorationIdentifier="youPassword" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="your password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0wv-ag-Kyr">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" restorationIdentifier="yourPassword" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="your password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0wv-ag-Kyr">
                                 <rect key="frame" x="25" y="438" width="343" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -126,7 +126,7 @@
                                     <action selector="signUp:" destination="M2c-i5-Tla" eventType="touchUpInside" id="K6t-9o-T8B"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalCompressionResistancePriority="751" restorationIdentifier="yourName" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nHB-64-NqQ">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalCompressionResistancePriority="751" restorationIdentifier="yourUsername" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nHB-64-NqQ">
                                 <rect key="frame" x="25" y="310" width="343" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -216,13 +216,20 @@
                                     <segue destination="JGg-cr-cJ1" kind="show" id="vi9-7N-Qko"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3ai-gn-kiU">
+                                <rect key="frame" x="25" y="253" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XYj-gn-CgC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="3ai-gn-kiU" firstAttribute="leading" secondItem="XYj-gn-CgC" secondAttribute="leading" constant="25" id="2RP-1P-aBG"/>
                             <constraint firstItem="h9B-Zp-xFc" firstAttribute="top" secondItem="XYj-gn-CgC" secondAttribute="top" constant="75" id="5Q4-kB-vdX"/>
                             <constraint firstItem="XYj-gn-CgC" firstAttribute="bottom" secondItem="OBR-Pr-mdV" secondAttribute="bottom" constant="485" id="5rr-Ds-uMW"/>
                             <constraint firstItem="XYj-gn-CgC" firstAttribute="trailing" secondItem="75Z-n3-JvY" secondAttribute="trailing" constant="25" id="6vC-7Q-oHR"/>
+                            <constraint firstItem="XYj-gn-CgC" firstAttribute="trailing" secondItem="3ai-gn-kiU" secondAttribute="trailing" constant="25" id="8pu-FX-hth"/>
                             <constraint firstItem="75Z-n3-JvY" firstAttribute="leading" secondItem="XYj-gn-CgC" secondAttribute="leading" constant="25" id="97U-Ry-Ro9"/>
                             <constraint firstItem="XYj-gn-CgC" firstAttribute="bottom" secondItem="h9B-Zp-xFc" secondAttribute="bottom" constant="600" id="AoJ-hb-OTs"/>
                             <constraint firstItem="h9B-Zp-xFc" firstAttribute="leading" secondItem="XYj-gn-CgC" secondAttribute="leading" constant="90" id="Cel-QI-05p"/>
@@ -233,8 +240,10 @@
                             <constraint firstItem="gHx-XG-a3h" firstAttribute="top" secondItem="OBR-Pr-mdV" secondAttribute="bottom" constant="25" id="WEX-ES-naX"/>
                             <constraint firstItem="gHx-XG-a3h" firstAttribute="leading" secondItem="XYj-gn-CgC" secondAttribute="leading" constant="25" id="bcK-p9-XIA"/>
                             <constraint firstItem="XYj-gn-CgC" firstAttribute="trailing" secondItem="OBR-Pr-mdV" secondAttribute="trailing" constant="25" id="jSy-Ol-LLy"/>
+                            <constraint firstItem="OBR-Pr-mdV" firstAttribute="top" secondItem="3ai-gn-kiU" secondAttribute="bottom" constant="20" id="l3n-oZ-CVO"/>
                             <constraint firstItem="OBR-Pr-mdV" firstAttribute="leading" secondItem="XYj-gn-CgC" secondAttribute="leading" constant="25" id="qrT-MN-Nx0"/>
                             <constraint firstItem="75Z-n3-JvY" firstAttribute="top" secondItem="gHx-XG-a3h" secondAttribute="bottom" constant="30" id="shz-hb-Acz"/>
+                            <constraint firstItem="3ai-gn-kiU" firstAttribute="top" secondItem="h9B-Zp-xFc" secondAttribute="bottom" constant="35" id="u7s-al-u49"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2jV-kY-tby"/>
@@ -242,6 +251,7 @@
                         <outlet property="email" destination="OBR-Pr-mdV" id="ovQ-37-F1u"/>
                         <outlet property="password" destination="gHx-XG-a3h" id="9bP-qn-f1l"/>
                         <outlet property="signIn" destination="75Z-n3-JvY" id="k1E-RS-7na"/>
+                        <outlet property="username" destination="3ai-gn-kiU" id="8Y1-ff-UGL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aep-SA-wed" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

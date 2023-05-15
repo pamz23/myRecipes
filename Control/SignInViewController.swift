@@ -10,6 +10,7 @@ import Foundation
 
 class SignInViewController: UIViewController {
     
+    @IBOutlet weak var username: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var signIn: UIButton!
@@ -23,6 +24,12 @@ class SignInViewController: UIViewController {
     
     @IBAction func signInButtonTapped(_ sender: UIButton) {
         // Perform sign-in logic here
+        
+        guard let username = username.text, !username.isEmpty else {
+            showAlert(withTitle: "Error", message: "Please enter yuor username.")
+            return
+        }
+        
         guard let email = email.text, !email.isEmpty else {
             showAlert(withTitle: "Error", message: "Please enter your username.")
             return
@@ -34,7 +41,7 @@ class SignInViewController: UIViewController {
         }
     
         // Validate the username and password
-        if validateCredentials(email: email, password: password) {
+        if validateCredentials(username: username, email: email, password: password) {
             // Successful sign-in
             showAlert(withTitle: "Success", message: "Sign-in successful!")
             // Navigate to the next screen or perform any necessary actions
@@ -44,11 +51,12 @@ class SignInViewController: UIViewController {
         }
     }
 
-    func validateCredentials(email: String, password: String) -> Bool {
+    func validateCredentials(username: String, email: String, password: String) -> Bool {
+        let validUsername = "myusername"
         let validEmail = "myemail"
         let validPassword = "mypassword"
         
-        return email == validEmail && password == validPassword
+        return username == validUsername && email == validEmail && password == validPassword
     }
 
     func showAlert(withTitle title: String, message: String) {
