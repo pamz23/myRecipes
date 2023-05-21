@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		208ACEFB2A1A411200F9FF2D /* settingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208ACEFA2A1A411200F9FF2D /* settingViewController.swift */; };
 		4D3180AC2A09E0CE005E7EB3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3180AB2A09E0CE005E7EB3 /* SignUpViewController.swift */; };
 		8D46567E2A00E1960027F9B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D46567D2A00E1960027F9B0 /* AppDelegate.swift */; };
 		8D4656802A00E1960027F9B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D46567F2A00E1960027F9B0 /* SceneDelegate.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		208ACEFA2A1A411200F9FF2D /* settingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingViewController.swift; sourceTree = "<group>"; };
 		4D3180AB2A09E0CE005E7EB3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8D46567A2A00E1960027F9B0 /* myRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D46567D2A00E1960027F9B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				4D3180AB2A09E0CE005E7EB3 /* SignUpViewController.swift */,
 				8DA5652D2A0A017700994C39 /* SignInViewController.swift */,
 				8D7446BC2A0A0B8A007CB693 /* RecipeListingViewController.swift */,
+				208ACEFA2A1A411200F9FF2D /* settingViewController.swift */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				8D46567E2A00E1960027F9B0 /* AppDelegate.swift in Sources */,
 				8D7446BD2A0A0B8A007CB693 /* RecipeListingViewController.swift in Sources */,
 				8D74475D2A15B10A007CB693 /* Recipes.xcdatamodeld in Sources */,
+				208ACEFB2A1A411200F9FF2D /* settingViewController.swift in Sources */,
 				8D4656802A00E1960027F9B0 /* SceneDelegate.swift in Sources */,
 				4D3180AC2A09E0CE005E7EB3 /* SignUpViewController.swift in Sources */,
 			);
