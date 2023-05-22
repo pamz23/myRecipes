@@ -69,6 +69,15 @@
                                     <segue destination="M2c-i5-Tla" kind="show" id="r1j-iD-nju"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TtR-kg-v77">
+                                <rect key="frame" x="118" y="747" width="185" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Test Flow (Temp Btn)"/>
+                                <connections>
+                                    <segue destination="s2f-Qt-2ri" kind="show" id="Xbj-yY-C0F"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="U2S-gq-Jt2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -261,18 +270,11 @@
         <!--settingViewController-->
         <scene sceneID="vlf-xc-Gvx">
             <objects>
-                <viewController storyboardIdentifier="AccountViewController" title="settingViewController" id="s2f-Qt-2ri" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountViewController" title="settingViewController" id="s2f-Qt-2ri" customClass="settingViewController" customModule="myRecipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DYV-Gx-o2m">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;Name&gt; Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fh0-yZ-cSj">
-                                <rect key="frame" x="16" y="84" width="154" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxq-nm-Axw">
                                 <rect key="frame" x="15" y="254" width="347" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -282,6 +284,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Change Name" titleAlignment="automatic">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="changeNameBtnTapped:" destination="s2f-Qt-2ri" eventType="touchUpInside" id="gwz-jL-D1d"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYv-QI-CVi">
                                 <rect key="frame" x="16" y="315" width="347" height="35"/>
@@ -291,6 +296,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Change Photo" titleAlignment="automatic"/>
                                 <connections>
+                                    <action selector="changePhotoBtnTapped:" destination="s2f-Qt-2ri" eventType="touchUpInside" id="5ZI-jI-Rw8"/>
                                     <action selector="changePhotoBtnTapped:" destination="uLl-h9-x6e" eventType="touchUpInside" id="bPe-nn-8HI"/>
                                 </connections>
                             </button>
@@ -308,11 +314,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d9A-wg-PfF">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" title="darkModeSwitch" translatesAutoresizingMaskIntoConstraints="NO" id="d9A-wg-PfF">
                                 <rect key="frame" x="316" y="450" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="darkModeSwitch:" destination="uLl-h9-x6e" eventType="valueChanged" id="k6a-RV-cLc"/>
+                                    <action selector="darkModeSwitchToggled:" destination="s2f-Qt-2ri" eventType="valueChanged" id="zhJ-tc-eSu"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Personal Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30w-LE-FLz">
@@ -326,10 +333,25 @@
                                 <rect key="frame" x="249" y="75" width="114" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;Name&gt; Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fh0-yZ-cSj">
+                                <rect key="frame" x="16" y="96" width="154" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hlF-Nz-0Fv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="8ed-V1-fXI"/>
+                    <connections>
+                        <outlet property="changeNameBtn" destination="yxq-nm-Axw" id="MXK-da-FVl"/>
+                        <outlet property="changePhotoBtn" destination="eYv-QI-CVi" id="fAF-db-psD"/>
+                        <outlet property="darkModeSwitch" destination="d9A-wg-PfF" id="IOX-pK-5S1"/>
+                        <outlet property="nameLabel" destination="fh0-yZ-cSj" id="gF4-iy-rlP"/>
+                        <outlet property="profilePhotoImgView" destination="jaQ-j2-6pq" id="fLt-m0-HO5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uBy-cJ-Goa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="uLl-h9-x6e" userLabel="Exit" sceneMemberID="exit"/>

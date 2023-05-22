@@ -11,23 +11,59 @@ import UIKit
 
 class settingViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profilePhotoImgView: UIImageView!
+    @IBOutlet weak var changeNameBtn: UIButton!
+    @IBOutlet weak var changePhotoBtn: UIButton!
+    @IBOutlet weak var darkModeSwitch: UISwitch!
     
-    
+    var name: String = "Jane's Profile"
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        updateNameLabel()
     }
     
-
+    private func updateNameLabel() {
+            nameLabel.text = name
+        }
+    
+    @IBAction func changeNameBtnTapped(_ sender: UIButton) {
+        let alertController = UIAlertController(title: "Change Name", message: "Enter your new name", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = "New Name"
+        }
+        
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [weak self] _ in
+            guard let textField = alertController.textFields?.first,
+                  let newName = textField.text,
+                  !newName.isEmpty else {
+                return
+            }
+            
+            self?.name = newName
+            self?.updateNameLabel()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+                
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    
     @IBAction func changePhotoBtnTapped(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
     }
+    
+    
     
     
     
@@ -43,22 +79,23 @@ class settingViewController: UIViewController, UIImagePickerControllerDelegate, 
         picker.dismiss(animated: true, completion: nil)
     }
     
-    
-    
-    @IBAction func darkModeSwitch(_ sender: UISwitch) {
+    //dark mode toggle
+    @IBAction func darkModeSwitchToggled(_ sender: UISwitch) {
         if sender.isOn {
-            if let window = UIApplication.shared.windows.first {
-                window.overrideUserInterfaceStyle = .dark
-            }
-        } else {
-            if let window = UIApplication.shared.windows.first {
-                window.overrideUserInterfaceStyle = .light
-            }
-        }
+                    if let window = UIApplication.shared.windows.first {
+                        window.overrideUserInterfaceStyle = .dark
+                    }
+                } else {
+                    if let window = UIApplication.shared.windows.first {
+                        window.overrideUserInterfaceStyle = .light
+                    }
+                }
         
+    }
+    
     }
     
     
   
-}
+
 
