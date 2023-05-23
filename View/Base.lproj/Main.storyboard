@@ -104,6 +104,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aN8-Us-6Ca"/>
+                    <connections>
+                        <outlet property="logInButton" destination="l9r-Ac-r0O" id="8v1-AV-2rn"/>
+                        <outlet property="signUpButton" destination="rbS-2P-n0N" id="yiL-5Z-f0F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qKJ-ge-Qkg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -133,6 +137,8 @@
                                 <buttonConfiguration key="configuration" style="tinted" title="Sign Up"/>
                                 <connections>
                                     <action selector="signUp:" destination="M2c-i5-Tla" eventType="touchUpInside" id="K6t-9o-T8B"/>
+                                    <action selector="signupButtonTapped:" destination="M2c-i5-Tla" eventType="touchUpInside" id="yyf-wp-0Uk"/>
+                                    <segue destination="JGg-cr-cJ1" kind="show" id="0YR-c2-Z8f"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalCompressionResistancePriority="751" restorationIdentifier="yourUsername" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nHB-64-NqQ">
@@ -222,6 +228,7 @@
                                 <buttonConfiguration key="configuration" style="tinted" title="Sign in"/>
                                 <connections>
                                     <action selector="signIn:" destination="XQQ-0Z-1vs" eventType="touchUpInside" id="2KO-gd-piu"/>
+                                    <action selector="signInButtonTapped:" destination="XQQ-0Z-1vs" eventType="touchUpInside" id="FJq-qQ-mOz"/>
                                     <segue destination="JGg-cr-cJ1" kind="show" id="vi9-7N-Qko"/>
                                 </connections>
                             </button>
@@ -391,6 +398,7 @@
                         <viewLayoutGuide key="safeArea" id="Hfo-H9-FMI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="uOi-AZ-S8X"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="si1-BL-fHx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -472,6 +480,9 @@
             <point key="canvasLocation" x="5050" y="4"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="0YR-c2-Z8f"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

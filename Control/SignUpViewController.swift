@@ -32,7 +32,7 @@ class SignUpViewController: UIViewController {
     }
     
     // Handle editing changes in text fields
-        @objc func textFieldDidChange(_ textField: UITextField) {
+        @objc func textFieldDidChange(_: UITextField) {
             // Check if all fields have values
             let name = yourName.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
             let email = yourEmail.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
@@ -48,11 +48,9 @@ class SignUpViewController: UIViewController {
             if let nameToCheck = name, let userName = user["name"], nameToCheck == userName {
                 return true
             }
-            
             if let emailToCheck = email, let userEmail = user["email"], emailToCheck == userEmail {
                 return true
             }
-            
             if let passwordToCheck = password, let userPassword = user["password"], passwordToCheck == userPassword {
                 return true
             }
@@ -60,7 +58,25 @@ class SignUpViewController: UIViewController {
         return false
     }
 
-    @IBAction func signupButtonTapped(_ sender: UIButton) {
+    func performSignup(with username: String, email: String, password: String) {
+        let user:[String: String] = [
+        "name": username,
+        "email": email,
+        "password": password
+        ]
+        
+        users.append(user)
+
+        print("User registered successfully")
+        // Your signup logic here
+        // This is where you would typically make an API call to register the user
+        
+        
+        // Show success message
+        print("Sign up was successful")
+    }
+    
+    @IBAction func signupButtonTapped(_: UIButton) {
         // Check if all fields are filled
         guard  let username = yourName.text,
                let email = yourEmail.text,
@@ -74,14 +90,5 @@ class SignUpViewController: UIViewController {
         
         // Perform signup process
         performSignup(with: username, email: email, password: password)
-    }
-    
-    func performSignup(with username: String, email: String, password: String) {
-        // Your signup logic here
-        // This is where you would typically make an API call to register the user
-        
-        
-        // Show success message
-        print("Sign up was successful")
     }
 }

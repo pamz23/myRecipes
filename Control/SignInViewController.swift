@@ -40,7 +40,7 @@ class SignInViewController: UIViewController {
         }
     
     // Action for sign-in button
-    @IBAction func signInButtonTapped(_ sender: UIButton) {
+    @IBAction func signInButtonTapped(_: UIButton) {
  
         //checks if username textfield is empty
         guard let username = username.text, !username.isEmpty else {
@@ -59,7 +59,7 @@ class SignInViewController: UIViewController {
         }
 
         // Validate the username, email, and password
-        if validateCredentials(username: username, email: email, password: password, <#UITextField#>) {
+        if validateCredentials(username: username, email: email, password: password, UITextField()) {
             // Successful sign-in
             showAlert(withTitle: "Success", message: "Sign-in successful!")
             // Navigate to the next screen or perform any necessary actions
@@ -85,6 +85,7 @@ class SignInViewController: UIViewController {
             
             return username == validUsername && email == validEmail && password == validPassword
         }
+        return false
     }
 
     //function to display of alert with title and message to the user
