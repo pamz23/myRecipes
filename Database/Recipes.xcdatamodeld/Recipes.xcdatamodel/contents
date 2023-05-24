@@ -3,10 +3,10 @@
     <entity name="Recipe" representedClassName="Recipe" syncable="YES">
         <attribute name="favourite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary"/>
-        <attribute name="ingredients" optional="YES" attributeType="Transformable"/>
+        <attribute name="ingredients" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="serves" optional="YES" attributeType="String"/>
-        <attribute name="steps" optional="YES" attributeType="Transformable"/>
+        <attribute name="steps" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <attribute name="timeTaken" optional="YES" attributeType="String"/>
     </entity>
 </model>

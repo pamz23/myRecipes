@@ -2,7 +2,7 @@
 //  Recipe+CoreDataProperties.swift
 //  myRecipes
 //
-//  Created by Pamela Lim on 18/5/23.
+//  Created by Pamela Lim on 25/5/23.
 //
 //
 
@@ -18,11 +18,11 @@ extension Recipe {
 
     @NSManaged public var favourite: Bool
     @NSManaged public var image: Data?
+    @NSManaged public var ingredients: [String]?
     @NSManaged public var name: String?
     @NSManaged public var serves: String?
-    @NSManaged public var steps: NSObject?
+    @NSManaged public var steps: [String]?
     @NSManaged public var timeTaken: String?
-    @NSManaged public var ingredients: NSObject?
 
 }
 
