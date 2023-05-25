@@ -61,7 +61,7 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
             
         }
     }
-    
+    /*
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         <#code#>
     }
@@ -69,4 +69,5 @@ class GroceryListViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         <#code#>
     }
+     */
 }
