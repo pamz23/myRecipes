@@ -15,6 +15,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var signIn: UIButton!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,52 +41,47 @@ class SignInViewController: UIViewController {
         }
     
     // Action for sign-in button
+    
     @IBAction func signInButtonTapped(_: UIButton) {
  
         //checks if username textfield is empty
-        guard let username = username.text, !username.isEmpty else {
-            showAlert(withTitle: "Error", message: "Please enter yuor username.")
-            return
-        }
-        //checks if email textfield is empty
-        guard let email = email.text, !email.isEmpty else {
-            showAlert(withTitle: "Error", message: "Please enter your username.")
-            return
-        }
-        //checks if password textfield is empty
-        guard let password = password.text, !password.isEmpty else {
-            showAlert(withTitle: "Error", message: "Please enter your password.")
-            return
-        }
+            guard let username = username.text, !username.isEmpty else {
+                showAlert(withTitle: "Error", message: "Please enter your username.")
+                return
+            }
+            //checks if email textfield is empty
+            guard let email = email.text, !email.isEmpty else {
+                showAlert(withTitle: "Error", message: "Please enter your email.")
+                return
+            }
+            //checks if password textfield is empty
+            guard let password = password.text, !password.isEmpty else {
+                showAlert(withTitle: "Error", message: "Please enter your password.")
+                return
+            }
 
-        // Validate the username, email, and password
-        if validateCredentials(username: username, email: email, password: password, UITextField()) {
-            // Successful sign-in
-            showAlert(withTitle: "Success", message: "Sign-in successful!")
-            // Navigate to the next screen or perform any necessary actions
-        } else {
-            // Failed sign-in
-            showAlert(withTitle: "Error", message: "Invalid username, email or password.")
-        }
+            // Validate the username, email, and password
+            if validateCredentials(username: username, email: email, password: password) {
+                // Successful sign-in
+                showAlert(withTitle: "Success", message: "Sign-in successful!")
+
+                performSegue(withIdentifier: "SegueToRecipeListingA", sender: self) //Manual Segue
+                
+                // Navigate to the next screen or perform any necessary actions
+            } else {
+                // Failed sign-in
+                showAlert(withTitle: "Error", message: "Invalid username, email, or password.")
+            }
+        
     }
 
     //validates the credentials for all texifields
-    func validateCredentials(username: String, email: String, password: String, _ textField: UITextField) -> Bool {
+    func validateCredentials(username: String, email: String, password: String) -> Bool {
         let validUsername = "myusername"
         let validEmail = "myemail"
         let validPassword = "mypassword"
         
-        //deletes backwards if the count of charactes in textfield is more than 10
-        if let currentText = textField.text {
-            if currentText.count > 10 {
-                textField.deleteBackward()
-            } else {
-                textField.resignFirstResponder()
-            }
-            
-            return username == validUsername && email == validEmail && password == validPassword
-        }
-        return false
+        return username == validUsername && email == validEmail && password == validPassword
     }
 
     //function to display of alert with title and message to the user
@@ -97,11 +93,15 @@ class SignInViewController: UIViewController {
     }
     
     //creating segue to print username in nameLabel
+    
+    /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "username" {
+        if segue.identifier == "goToSettingB" {
             let dest = segue.destination as! settingViewController
             dest.nameLabel.text = username.text
         }
     }
+    */
+
     
 }

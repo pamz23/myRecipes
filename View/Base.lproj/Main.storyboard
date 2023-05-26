@@ -70,12 +70,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TtR-kg-v77">
-                                <rect key="frame" x="118" y="747" width="185" height="35"/>
+                                <rect key="frame" x="118" y="732" width="185" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Test Flow (Temp Btn)"/>
                                 <connections>
-                                    <segue destination="s2f-Qt-2ri" kind="show" id="Xbj-yY-C0F"/>
+                                    <segue destination="s2f-Qt-2ri" kind="show" id="HrL-jk-Bnf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -111,7 +111,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qKJ-ge-Qkg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-28" y="4"/>
+            <point key="canvasLocation" x="-28.244274809160306" y="3.5211267605633805"/>
         </scene>
         <!--SignUpViewController-->
         <scene sceneID="9he-fh-oVh">
@@ -136,9 +136,8 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Sign Up"/>
                                 <connections>
-                                    <action selector="signUp:" destination="M2c-i5-Tla" eventType="touchUpInside" id="K6t-9o-T8B"/>
                                     <action selector="signupButtonTapped:" destination="M2c-i5-Tla" eventType="touchUpInside" id="yyf-wp-0Uk"/>
-                                    <segue destination="JGg-cr-cJ1" kind="show" id="0YR-c2-Z8f"/>
+                                    <segue destination="JGg-cr-cJ1" kind="show" identifier="SegueToRecipeListing" id="fwU-6t-adf"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalCompressionResistancePriority="751" restorationIdentifier="yourUsername" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nHB-64-NqQ">
@@ -196,55 +195,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2GY-vb-pc0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="879" y="462"/>
-        </scene>
-        <!--Add Photo View Controller-->
-        <scene sceneID="QyF-1Z-apV">
-            <objects>
-                <viewController id="Hbs-n5-EYo" customClass="addPhotoViewController" customModule="myRecipes" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="peJ-ci-k41">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Let's choose a Photo!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="An2-BH-tyd">
-                                <rect key="frame" x="114" y="157" width="165" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hA5-O4-PHs">
-                                <rect key="frame" x="132" y="462" width="128" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Upload Photo"/>
-                                <connections>
-                                    <action selector="uploadPhotoBtnTapped:" destination="Hbs-n5-EYo" eventType="touchUpInside" id="qqP-C6-MOV"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kC-uL-Imc">
-                                <rect key="frame" x="162" y="691" width="69" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Finish"/>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eJS-bs-LzT">
-                                <rect key="frame" x="84" y="285" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="oXf-Gk-Gha"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <connections>
-                        <outlet property="finishBtn" destination="9kC-uL-Imc" id="U4V-db-8Fb"/>
-                        <outlet property="profilePhotoImgView" destination="eJS-bs-LzT" id="zBd-RH-HK2"/>
-                        <outlet property="uploadPhotoBtn" destination="hA5-O4-PHs" id="5TB-rB-L1a"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r5f-7T-ubh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1676" y="462"/>
+            <point key="canvasLocation" x="879" y="463"/>
         </scene>
         <!--SignInViewController-->
         <scene sceneID="74C-p1-L1F">
@@ -275,9 +226,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Sign in"/>
                                 <connections>
-                                    <action selector="signIn:" destination="XQQ-0Z-1vs" eventType="touchUpInside" id="2KO-gd-piu"/>
                                     <action selector="signInButtonTapped:" destination="XQQ-0Z-1vs" eventType="touchUpInside" id="FJq-qQ-mOz"/>
-                                    <segue destination="JGg-cr-cJ1" kind="show" id="vi9-7N-Qko"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3ai-gn-kiU">
@@ -316,16 +265,17 @@
                         <outlet property="password" destination="gHx-XG-a3h" id="9bP-qn-f1l"/>
                         <outlet property="signIn" destination="75Z-n3-JvY" id="k1E-RS-7na"/>
                         <outlet property="username" destination="3ai-gn-kiU" id="8Y1-ff-UGL"/>
+                        <segue destination="JGg-cr-cJ1" kind="show" identifier="SegueToRecipeListingA" id="K0g-nQ-YU8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aep-SA-wed" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="878.62595419847321" y="-294.36619718309862"/>
+            <point key="canvasLocation" x="821" y="-278"/>
         </scene>
         <!--settingViewController-->
         <scene sceneID="vlf-xc-Gvx">
             <objects>
-                <viewController storyboardIdentifier="AccountViewController" title="settingViewController" id="s2f-Qt-2ri" customClass="settingViewController" customModule="myRecipes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingViewController" title="settingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="s2f-Qt-2ri" customClass="settingViewController" customModule="myRecipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DYV-Gx-o2m">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -349,7 +299,7 @@
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Change Photo" titleAlignment="automatic"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Upload a Photo" titleAlignment="automatic"/>
                                 <connections>
                                     <action selector="changePhotoBtnTapped:" destination="s2f-Qt-2ri" eventType="touchUpInside" id="5ZI-jI-Rw8"/>
                                     <action selector="changePhotoBtnTapped:" destination="uLl-h9-x6e" eventType="touchUpInside" id="bPe-nn-8HI"/>
@@ -449,7 +399,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dt3-ha-pmS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1574.8091603053435" y="-294.36619718309862"/>
+            <point key="canvasLocation" x="1682" y="-294"/>
         </scene>
         <!--IndividualRecipeViewController-->
         <scene sceneID="oKt-xu-WMd">
@@ -557,7 +507,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0YR-c2-Z8f"/>
+        <segue reference="fwU-6t-adf"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="cart" catalog="system" width="128" height="102"/>

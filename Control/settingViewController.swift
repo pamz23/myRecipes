@@ -18,14 +18,17 @@ class settingViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var changePhotoBtn: UIButton!
     @IBOutlet weak var darkModeSwitch: UISwitch!
     
-    var name: String = "Jane's Profile"
+    var username: String?
+    var selectedPhoto: UIImage?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         updateNameLabel()
-        
+        let placeholderImage = UIImage(named: "placeholder_image")
+        profilePhotoImgView.image = placeholderImage
+ 
         // Make the profile photo view circular
            profilePhotoImgView.layer.cornerRadius = profilePhotoImgView.frame.size.width / 2
            profilePhotoImgView.clipsToBounds = true
@@ -37,10 +40,15 @@ class settingViewController: UIViewController, UIImagePickerControllerDelegate, 
            profilePhotoImgView.heightAnchor.constraint(equalToConstant: 120).isActive = true
            profilePhotoImgView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 240).isActive = true
         profilePhotoImgView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -1).isActive = true
+        
     }
     
+    
+    
     private func updateNameLabel() {
-            nameLabel.text = name
+        if let username = username {
+                    nameLabel.text = username
+                }
         }
     
     @IBAction func changeNameBtnTapped(_ sender: UIButton) {
@@ -56,7 +64,7 @@ class settingViewController: UIViewController, UIImagePickerControllerDelegate, 
                 return
             }
             
-            self?.name = newName
+            self?.username = newName
             self?.updateNameLabel()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -77,6 +85,7 @@ class settingViewController: UIViewController, UIImagePickerControllerDelegate, 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let selectedImage = info[.originalImage] as? UIImage {
             profilePhotoImgView.image = selectedImage
+            changePhotoBtn.setTitle("Change your Photo", for: .normal)
         }
         
         picker.dismiss(animated: true, completion: nil)

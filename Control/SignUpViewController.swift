@@ -90,13 +90,18 @@ class SignUpViewController: UIViewController {
         
         // Perform signup process
         performSignup(with: username, email: email, password: password)
+        performSegue(withIdentifier: "SegueToRecipeListing", sender: self)
     }
     
     //creating segue to print username in nameLabel
+    
+    /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "your name" {
-            let dest = segue.destination as! settingViewController
-            dest.nameLabel.text = yourName.text
+        if segue.identifier == "goToSettingA" {
+            let destinationVC = segue.destination as! settingViewController
+            destinationVC.username = yourName.text
         }
     }
+     */
+
 }
