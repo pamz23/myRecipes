@@ -67,17 +67,12 @@ class settingViewController: UIViewController, UIImagePickerControllerDelegate, 
         present(alertController, animated: true, completion: nil)
     }
     
-    
     @IBAction func changePhotoBtnTapped(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
     }
-    
-    
-    
-    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let selectedImage = info[.originalImage] as? UIImage {

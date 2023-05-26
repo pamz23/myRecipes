@@ -95,4 +95,13 @@ class SignInViewController: UIViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
+    
+    //creating segue to print username in nameLabel
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "username" {
+            let dest = segue.destination as! settingViewController
+            dest.nameLabel.text = username.text
+        }
+    }
+    
 }
