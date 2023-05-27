@@ -1,5 +1,5 @@
 //
-//  RecipeListingViewController.swift
+//  FavouriteRecipesViewController.swift
 //  myRecipes
 //
 //  Created by Pamela Lim on 25/5/23.
@@ -9,19 +9,19 @@ import Foundation
 import UIKit
 import CoreData
 
-class FavouriteRecipeTableViewCell: UITableViewCell{
-    
+class FavouriteRecipeTableViewCell: UITableViewCell {
+
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeTimeTakenLabel: UILabel!
-        
+
 }
 
 class FavouriteRecipesViewController: UIViewController {
-    
-    
+
+
     @IBOutlet weak var favouriteTableView: UITableView!
-    
+
     // Reference to managed object context
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
@@ -32,7 +32,6 @@ class FavouriteRecipesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-//      addRecipes()
 
         if UserDefaults.standard.bool(forKey: "isRecipesAdded") == false {
             addRecipes() // Add Sample Recipes
@@ -42,34 +41,31 @@ class FavouriteRecipesViewController: UIViewController {
 
         // Get items from Core Data
         fetchRecipes()
-        
-
     }
 
 
     func fetchRecipes() {
 
-            // Create a fetch request with a string filter
-            // for an entity’s name
-            let fetchRequest: NSFetchRequest<Recipe>
-            fetchRequest = Recipe.fetchRequest()
+        // Create a fetch request with a string filter
+        // for an entity’s name
+        let fetchRequest: NSFetchRequest<Recipe>
+        fetchRequest = Recipe.fetchRequest()
 
-            fetchRequest.predicate = NSPredicate(
-                format: "favourite == %d", true
-            )
+        fetchRequest.predicate = NSPredicate(
+            format: "favourite == %d", true
+        )
 
-            // Get a reference to a NSManagedObjectContext
-            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            
-            // Fetch the data from Core Data to display in the tableview
-            do {
-                self.items = try context.fetch(fetchRequest)
-                //print(self.items?.count)
-                self.favouriteTableView.reloadData()
-            } catch {
+        // Get a reference to a NSManagedObjectContext
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
-            }
+        // Fetch the data from Core Data to display in the tableview
+        do {
+            self.items = try context.fetch(fetchRequest)
+            self.favouriteTableView.reloadData()
+        } catch {
+
         }
+    }
 
 }
 
@@ -96,24 +92,24 @@ extension FavouriteRecipesViewController: UITableViewDataSource {
             cell.recipeTimeTakenLabel.text = "Time taken: \(time ?? "0")"
             cell.recipeImage.image = UIImage(data: recipe.image!)
             cell.recipeImage.contentMode = .scaleAspectFill
-                        NSLayoutConstraint.activate([
-                            cell.recipeImage.topAnchor.constraint(equalTo: cell.topAnchor),
-                            cell.recipeImage.leadingAnchor.constraint(equalTo: cell.leadingAnchor),
-                            cell.recipeImage.trailingAnchor.constraint(equalTo: cell.trailingAnchor),
-                            cell.recipeImage.bottomAnchor.constraint(equalTo: cell.bottomAnchor)
-                        ])
-                        cell.recipeImage.heightAnchor.constraint(equalToConstant: 110).isActive = true
-                        cell.recipeImage.widthAnchor.constraint(equalToConstant: 70).isActive = true
+            NSLayoutConstraint.activate([
+                cell.recipeImage.topAnchor.constraint(equalTo: cell.topAnchor),
+                cell.recipeImage.leadingAnchor.constraint(equalTo: cell.leadingAnchor),
+                cell.recipeImage.trailingAnchor.constraint(equalTo: cell.trailingAnchor),
+                cell.recipeImage.bottomAnchor.constraint(equalTo: cell.bottomAnchor)
+            ])
+            cell.recipeImage.heightAnchor.constraint(equalToConstant: 110).isActive = true
+            cell.recipeImage.widthAnchor.constraint(equalToConstant: 70).isActive = true
             return cell
         }
         return cell
 
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 100;//Choose your custom row height
-        }
-    
+        return 100;//Choose your custom row height
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let selectedRow = favouriteTableView.indexPathForSelectedRow!.row
         if segue.identifier == "goToIndividualRecipeViewController" {
@@ -121,7 +117,7 @@ extension FavouriteRecipesViewController: UITableViewDataSource {
             VC.indivRecipe = self.items![selectedRow]
         }
     }
-    
+
 
 
 }

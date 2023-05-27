@@ -1,6 +1,6 @@
 //
-//  ViewController.swift
-//  getDataTest
+//  IndividualRecipeViewController.swift
+//  myRecipes
 //
 //  Created by Pamela Lim on 14/5/23.
 //
@@ -28,6 +28,7 @@ class IndividualRecipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        //update the labels for the selected recipe
         recipeNameLabel.text = indivRecipe?.name
         ingredientsLabel.text = indivRecipe?.ingredients?.joined(separator: "\n")
         ingredientsLabel.translatesAutoresizingMaskIntoConstraints = true
@@ -48,15 +49,13 @@ class IndividualRecipeViewController: UIViewController {
         } else {
             favImage = UIImage(named: "unheart.png")
         }
-
         let resizedImage = favImage!.resizeImage()
                 recipeFav.setImage(resizedImage, for: UIControl.State.normal)
 
     }
     
-    
+    // favourites button
     @IBAction func pressButton(_ sender: Any) {
-//        indivRecipe?.favourite = true
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let name = indivRecipe?.name
                 let fetchRequest : NSFetchRequest<Recipe> = Recipe.fetchRequest()
@@ -79,12 +78,11 @@ class IndividualRecipeViewController: UIViewController {
         
     }
     
-    
+    // ensure that scroll view only scrolls within the frame
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let contentWidth = scrollView.contentSize.width
         scrollView.contentSize = CGSize(width: contentWidth, height: scrollView.frame.height)
         scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: contentWidth - scrollView.frame.width)
-        scrollView.bounces = false
         scrollView.contentOffset.x = 0
     }
     
@@ -93,6 +91,7 @@ class IndividualRecipeViewController: UIViewController {
 
 }
 
+// resizing the favourite button
 extension UIImage {
     func resizeImage() -> UIImage {
         let newSize = CGSize(width: 20, height: 20)

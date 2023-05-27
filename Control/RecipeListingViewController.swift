@@ -46,7 +46,6 @@ class RecipeListingViewController: UIViewController {
         // Fetch the data from Core Data to display in the tableview
         do {
             self.items = try context.fetch(Recipe.fetchRequest())
-            //print(self.items?.count)
             self.recipeTableView.reloadData()
         } catch {
 
@@ -54,7 +53,6 @@ class RecipeListingViewController: UIViewController {
     }
 
 }
-
 
 
 
@@ -70,7 +68,7 @@ extension RecipeListingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = recipeTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RecipeTableViewCell
 
-        // Get recipe from array and set the label
+        // Get recipe from array and set the labels
         if self.items?.count ?? 0 > 0 {
             let recipe = self.items![indexPath.row]
             cell.recipeLabel.text = recipe.name
@@ -102,8 +100,6 @@ extension RecipeListingViewController: UITableViewDataSource {
         if segue.identifier == "goToIndividualRecipeViewController" {
             let VC = segue.destination as! IndividualRecipeViewController
             VC.indivRecipe = self.items![selectedRow]
-        } else if segue.identifier == "goToGroceryListViewController" {
-            let VC = segue.destination as! GroceryListViewController
         }
     }
     
