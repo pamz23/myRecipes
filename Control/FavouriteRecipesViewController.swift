@@ -9,16 +9,19 @@ import Foundation
 import UIKit
 import CoreData
 
-class RecipeTableViewCell: UITableViewCell{
-    @IBOutlet weak var recipeLabel: UILabel!
-    @IBOutlet weak var recipeImage: UIImageView!
-    @IBOutlet weak var timeTakenLabel: UILabel!
+class FavouriteRecipeTableViewCell: UITableViewCell{
     
+    @IBOutlet weak var recipeImage: UIImageView!
+    @IBOutlet weak var recipeNameLabel: UILabel!
+    @IBOutlet weak var recipeTimeTakenLabel: UILabel!
+        
 }
 
-class RecipeListingViewController: UIViewController {
+class FavouriteRecipesViewController: UIViewController {
     
-    @IBOutlet weak var recipeTableView: UITableView!
+    
+    @IBOutlet weak var favouriteTableView: UITableView!
+    
     // Reference to managed object context
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
@@ -34,8 +37,8 @@ class RecipeListingViewController: UIViewController {
         if UserDefaults.standard.bool(forKey: "isRecipesAdded") == false {
             addRecipes() // Add Sample Recipes
         }
-        recipeTableView.dataSource = self
-        recipeTableView.delegate = self
+        favouriteTableView.dataSource = self
+        favouriteTableView.delegate = self
 
         // Get items from Core Data
         fetchRecipes()
@@ -50,24 +53,36 @@ class RecipeListingViewController: UIViewController {
 
     func fetchRecipes() {
 
-        // Fetch the data from Core Data to display in the tableview
-        do {
-            self.items = try context.fetch(Recipe.fetchRequest())
-            //print(self.items?.count)
-            self.recipeTableView.reloadData()
-        } catch {
+            // Create a fetch request with a string filter
+            // for an entity’s name
+            let fetchRequest: NSFetchRequest<Recipe>
+            fetchRequest = Recipe.fetchRequest()
 
+            fetchRequest.predicate = NSPredicate(
+                format: "favourite == %d", true
+            )
+
+            // Get a reference to a NSManagedObjectContext
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            
+            // Fetch the data from Core Data to display in the tableview
+            do {
+                self.items = try context.fetch(fetchRequest)
+                //print(self.items?.count)
+                self.favouriteTableView.reloadData()
+            } catch {
+
+            }
         }
-    }
 
 }
 
 
 
 
-extension RecipeListingViewController: UITableViewDelegate { }
+extension FavouriteRecipesViewController: UITableViewDelegate { }
 
-extension RecipeListingViewController: UITableViewDataSource {
+extension FavouriteRecipesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         // Returns the number of recipes
@@ -75,14 +90,14 @@ extension RecipeListingViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = recipeTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! RecipeTableViewCell
+        let cell = favouriteTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FavouriteRecipeTableViewCell
 
         // Get recipe from array and set the label
         if self.items?.count ?? 0 > 0 {
             let recipe = self.items![indexPath.row]
-            cell.recipeLabel.text = recipe.name
+            cell.recipeNameLabel.text = recipe.name
             let time = recipe.timeTaken
-            cell.timeTakenLabel.text = "Time taken: \(time ?? "0")"
+            cell.recipeTimeTakenLabel.text = "Time taken: \(time ?? "0")"
             cell.recipeImage.image = UIImage(data: recipe.image!)
             cell.recipeImage.contentMode = .scaleAspectFill
                         NSLayoutConstraint.activate([
@@ -98,14 +113,13 @@ extension RecipeListingViewController: UITableViewDataSource {
         return cell
 
     }
-
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return 100;//Choose your custom row height
         }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let selectedRow = recipeTableView.indexPathForSelectedRow!.row
+        let selectedRow = favouriteTableView.indexPathForSelectedRow!.row
         if segue.identifier == "goToIndividualRecipeViewController" {
             let VC = segue.destination as! IndividualRecipeViewController
             VC.indivRecipe = self.items![selectedRow]

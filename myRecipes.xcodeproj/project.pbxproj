@@ -25,6 +25,7 @@
 		8D850FBA2A1E59AF00C43873 /* BuildCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D850FB92A1E59AF00C43873 /* BuildCoreData.swift */; };
 		8D850FC22A1E639E00C43873 /* RecipeListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D850FC12A1E639E00C43873 /* RecipeListingViewController.swift */; };
 		8DA5652E2A0A017700994C39 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA5652D2A0A017700994C39 /* SignInViewController.swift */; };
+		8DBA2A2F2A220C7F007AB0F4 /* FavouriteRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBA2A2E2A220C7F007AB0F4 /* FavouriteRecipesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		8D850FB92A1E59AF00C43873 /* BuildCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildCoreData.swift; sourceTree = "<group>"; };
 		8D850FC12A1E639E00C43873 /* RecipeListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListingViewController.swift; sourceTree = "<group>"; };
 		8DA5652D2A0A017700994C39 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		8DBA2A2E2A220C7F007AB0F4 /* FavouriteRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteRecipesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				208ACEFA2A1A411200F9FF2D /* settingViewController.swift */,
 				8D850FC12A1E639E00C43873 /* RecipeListingViewController.swift */,
 				8D382C1C2A1E6AAB006AA86F /* IndividualRecipeViewController.swift */,
+				8DBA2A2E2A220C7F007AB0F4 /* FavouriteRecipesViewController.swift */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				8DA5652E2A0A017700994C39 /* SignInViewController.swift in Sources */,
 				8D46567E2A00E1960027F9B0 /* AppDelegate.swift in Sources */,
 				8D382C202A1E6CC1006AA86F /* Recipe+CoreDataClass.swift in Sources */,
+				8DBA2A2F2A220C7F007AB0F4 /* FavouriteRecipesViewController.swift in Sources */,
 				8D74475D2A15B10A007CB693 /* Recipes.xcdatamodeld in Sources */,
 				8D382C1D2A1E6AAB006AA86F /* IndividualRecipeViewController.swift in Sources */,
 				208ACEFB2A1A411200F9FF2D /* settingViewController.swift in Sources */,
