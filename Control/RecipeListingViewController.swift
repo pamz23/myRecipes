@@ -29,8 +29,6 @@ class RecipeListingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-//      addRecipes()
-
         if UserDefaults.standard.bool(forKey: "isRecipesAdded") == false {
             addRecipes() // Add Sample Recipes
         }
@@ -39,11 +37,6 @@ class RecipeListingViewController: UIViewController {
 
         // Get items from Core Data
         fetchRecipes()
-        
-        for item in self.items! {
-            print(item.name)
-            print(item.image)
-        }
 
     }
 
@@ -109,6 +102,8 @@ extension RecipeListingViewController: UITableViewDataSource {
         if segue.identifier == "goToIndividualRecipeViewController" {
             let VC = segue.destination as! IndividualRecipeViewController
             VC.indivRecipe = self.items![selectedRow]
+        } else if segue.identifier == "goToGroceryListViewController" {
+            let VC = segue.destination as! GroceryListViewController
         }
     }
     

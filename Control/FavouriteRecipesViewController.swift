@@ -43,10 +43,6 @@ class FavouriteRecipesViewController: UIViewController {
         // Get items from Core Data
         fetchRecipes()
         
-        for item in self.items! {
-            print(item.name)
-            print(item.image)
-        }
 
     }
 
