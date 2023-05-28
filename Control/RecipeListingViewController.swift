@@ -82,7 +82,7 @@ extension RecipeListingViewController: UITableViewDataSource {
                             cell.recipeImage.trailingAnchor.constraint(equalTo: cell.trailingAnchor),
                             cell.recipeImage.bottomAnchor.constraint(equalTo: cell.bottomAnchor)
                         ])
-                        cell.recipeImage.heightAnchor.constraint(equalToConstant: 110).isActive = true
+                        cell.recipeImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
                         cell.recipeImage.widthAnchor.constraint(equalToConstant: 70).isActive = true
             return cell
         }

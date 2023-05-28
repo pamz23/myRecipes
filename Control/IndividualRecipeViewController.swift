@@ -9,8 +9,6 @@ import UIKit
 import Foundation
 import CoreData
 
-
-
 class IndividualRecipeViewController: UIViewController {
     
     @IBOutlet weak var recipeNameLabel: UILabel!
@@ -31,14 +29,11 @@ class IndividualRecipeViewController: UIViewController {
         //update the labels for the selected recipe
         recipeNameLabel.text = indivRecipe?.name
         ingredientsLabel.text = indivRecipe?.ingredients?.joined(separator: "\n")
-        ingredientsLabel.translatesAutoresizingMaskIntoConstraints = true
-        ingredientsLabel.sizeToFit()
         instructionsLabel.text = indivRecipe?.steps?.joined(separator: "\n")
-        instructionsLabel.translatesAutoresizingMaskIntoConstraints = true
-        instructionsLabel.sizeToFit()
         timeTakenLabel.text = "Time taken: \(indivRecipe?.timeTaken ?? "error")"
         servesLabel.text = "Serves: \(indivRecipe?.serves ?? "error")"
-        scrollViewDidScroll(scrollView: recipeScrollView)
+        
+        // to resize the image to fit
         recipeImage.image = UIImage(data: indivRecipe!.image!)
         recipeImage.contentMode = .scaleAspectFill
         recipeImage.heightAnchor.constraint(equalToConstant: 250).isActive = true
@@ -50,45 +45,29 @@ class IndividualRecipeViewController: UIViewController {
             favImage = UIImage(named: "unheart.png")
         }
         let resizedImage = favImage!.resizeImage()
-                recipeFav.setImage(resizedImage, for: UIControl.State.normal)
-
+        recipeFav.setImage(resizedImage, for: UIControl.State.normal)
     }
     
     // favourites button
     @IBAction func pressButton(_ sender: Any) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let name = indivRecipe?.name
-                let fetchRequest : NSFetchRequest<Recipe> = Recipe.fetchRequest()
+        let fetchRequest : NSFetchRequest<Recipe> = Recipe.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "name == %@", name!)
-                let results = try! context.fetch(fetchRequest)
-                if let container = results.first {
-                    container.favourite = !indivRecipe!.favourite
-                   try! context.save()
-                   context.refresh(container, mergeChanges: false)
-                    
-                    if (container.favourite == true) {
-                        favImage = UIImage(named: "heart.png")
-                    } else {
-                        favImage = UIImage(named: "unheart.png")
-                    }
-                    let resizedImage = favImage!.resizeImage()
-                            recipeFav.setImage(resizedImage, for: UIControl.State.normal)
-                }
-        
-        
+        let results = try! context.fetch(fetchRequest)
+        if let container = results.first {
+            container.favourite = !indivRecipe!.favourite
+           try! context.save()
+           context.refresh(container, mergeChanges: false)
+            if (container.favourite == true) {
+                favImage = UIImage(named: "heart.png")
+            } else {
+                favImage = UIImage(named: "unheart.png")
+            }
+            let resizedImage = favImage!.resizeImage()
+            recipeFav.setImage(resizedImage, for: UIControl.State.normal)
+        }
     }
-    
-    // ensure that scroll view only scrolls within the frame
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        let contentWidth = scrollView.contentSize.width
-        scrollView.contentSize = CGSize(width: contentWidth, height: scrollView.frame.height)
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: contentWidth - scrollView.frame.width)
-        scrollView.contentOffset.x = 0
-    }
-    
-    
-    
-
 }
 
 // resizing the favourite button

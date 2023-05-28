@@ -1,11 +1,9 @@
 //
 //  BuildCoreData.swift
-//  getDataTest
+//  myRecipes
 //
 //  Created by Pamela Lim on 17/5/23.
 //
-
-// BuildCoredData.swift
 
 import Foundation
 import CoreData
@@ -18,8 +16,8 @@ func addRecipes() {
 
     let appDel: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     let appContext: NSManagedObjectContext = appDel.persistentContainer.viewContext
-
-    // If you need to delete any existing records, say for an app refresh, then use the code below end func before you add new records.
+    
+    // add recipes
     addRecipe1()
     addRecipe2()
     addRecipe3()
@@ -28,10 +26,6 @@ func addRecipes() {
     addRecipe6()
     addRecipe7()
     addRecipe8()
-//    addRecipe9()
-//    addRecipe10()
-
-
 
     do { try appContext.save()
         UserDefaults.standard.set(true, forKey: "isRecipesAdded")
@@ -39,20 +33,6 @@ func addRecipes() {
     } catch _ {
         print(#function, "Error Adding Recipe Samples")
     }
-
-
-    //use this to delete things
-//    UserDefaults.standard.set(false, forKey: "isRecipesAdded")
-//    let requestDelete8Books = NSFetchRequest<NSFetchRequestResult>(entityName: entityRecipe)
-//    requestDelete8Books.returnsObjectsAsFaults = false
-//    let appRecordsToDelete = try? managedObjectContext?.fetch(requestDelete8Books)
-//    if (appRecordsToDelete?.count)! > 0 {
-//        for recordToDelete in appRecordsToDelete! {
-//            managedObjectContext?.delete(recordToDelete as! Recipe)
-//            print(#function, "Deleted Record")
-//            do { try managedObjectContext?.save() } catch _ { }
-//        }
-//    }
 
 }
 
@@ -65,8 +45,8 @@ func addRecipe1() {
         let recipe = NSEntityDescription.insertNewObject(forEntityName: entityRecipe, into: managedObjectContext) as! Recipe
 
         recipe.name = "Garlic Butter Steak"
-        recipe.serves = "1hr 8 mins"
-        recipe.timeTaken = "2"
+        recipe.timeTaken = "1hr 8 mins"
+        recipe.serves = "2"
         recipe.favourite = false
         recipe.ingredients = ["1 ribeye steak, 2-inch (5-cm)-thick, preferably USDA Prime",
                               "kosher salt, to taste",
@@ -102,8 +82,8 @@ func addRecipe2() {
         let recipe = NSEntityDescription.insertNewObject(forEntityName: entityRecipe, into: managedObjectContext) as! Recipe
 
         recipe.name = "Zucchini Fritter"
-        recipe.serves = "20 mins"
-        recipe.timeTaken = "6"
+        recipe.timeTaken = "20 mins"
+        recipe.serves = "6"
         recipe.favourite = false
         recipe.ingredients = ["2 lb zucchini, about 2 large or 5 medium",
                               "1 1/2 tsp fine sea salt, divided",
@@ -137,8 +117,8 @@ func addRecipe3() {
         let recipe = NSEntityDescription.insertNewObject(forEntityName: entityRecipe, into: managedObjectContext) as! Recipe
 
         recipe.name = "Cacio e Pepe"
-        recipe.serves = "20 mins"
-        recipe.timeTaken = "4"
+        recipe.timeTaken = "20 mins"
+        recipe.serves = "4"
         recipe.favourite = false
         recipe.ingredients = ["12 ounces spaghetti",
                               "4 tablespoons unsalted butter, at room temperature",
@@ -167,8 +147,8 @@ func addRecipe4() {
         let recipe = NSEntityDescription.insertNewObject(forEntityName: entityRecipe, into: managedObjectContext) as! Recipe
 
         recipe.name = "Cheesy gnocchi with spinach and sausage"
-        recipe.serves = "15 mins"
-        recipe.timeTaken = "4"
+        recipe.timeTaken = "15 mins"
+        recipe.serves = "4"
         recipe.favourite = false
         recipe.ingredients = ["500g Garlic & Herb Pork Sausages",
                               "500g pkt Potato Gnocchi",
@@ -196,8 +176,8 @@ func addRecipe5() {
         let recipe = NSEntityDescription.insertNewObject(forEntityName: entityRecipe, into: managedObjectContext) as! Recipe
 
         recipe.name = "Cream of mushroom soup"
-        recipe.serves = "40 mins"
-        recipe.timeTaken = "6"
+        recipe.timeTaken = "40 mins"
+        recipe.serves = "6"
         recipe.favourite = false
         recipe.ingredients = ["4 tablespoons butter",
                               "1 tablespoon oil",
@@ -237,8 +217,8 @@ func addRecipe6() {
         let recipe = NSEntityDescription.insertNewObject(forEntityName: entityRecipe, into: managedObjectContext) as! Recipe
 
         recipe.name = "Apricot chicken tray bake"
-        recipe.serves = "55 mins"
-        recipe.timeTaken = "4"
+        recipe.timeTaken = "55 mins"
+        recipe.serves = "4"
         recipe.favourite = false
         recipe.ingredients = ["695g tub apricot halves in juice",
                               "4 sprigs fresh rosemary",
@@ -269,8 +249,8 @@ func addRecipe7() {
         let recipe = NSEntityDescription.insertNewObject(forEntityName: entityRecipe, into: managedObjectContext) as! Recipe
 
         recipe.name = "Old-Fashioned Beef Stew"
-        recipe.serves = "2 hrs 30 mins"
-        recipe.timeTaken = "4"
+        recipe.timeTaken = "2 hrs 30 mins"
+        recipe.serves = "4"
         recipe.favourite = false
         recipe.ingredients = ["¼cup all-purpose flour",
                               "¼teaspoon freshly ground pepper",
@@ -306,8 +286,8 @@ func addRecipe8() {
         let recipe = NSEntityDescription.insertNewObject(forEntityName: entityRecipe, into: managedObjectContext) as! Recipe
 
         recipe.name = "Easy chocolate fudge cake"
-        recipe.serves = "55 mins"
-        recipe.timeTaken = "8"
+        recipe.timeTaken = "55 mins"
+        recipe.serves = "8"
         recipe.favourite = false
         recipe.ingredients = ["150ml sunflower oil, plus extra for the tin",
                               "175g self-raising flour",
@@ -334,4 +314,23 @@ func addRecipe8() {
         }
 
     }
+    
 }
+
+
+// used to clear all recipe data
+func delete_recipes(){
+        UserDefaults.standard.set(false, forKey: "isRecipesAdded")
+        let requestDelete8Books = NSFetchRequest<NSFetchRequestResult>(entityName: entityRecipe)
+        requestDelete8Books.returnsObjectsAsFaults = false
+        let appRecordsToDelete = try? managedObjectContext?.fetch(requestDelete8Books)
+        if (appRecordsToDelete?.count)! > 0 {
+            for recordToDelete in appRecordsToDelete! {
+                managedObjectContext?.delete(recordToDelete as! Recipe)
+                print(#function, "Deleted Record")
+                do { try managedObjectContext?.save() } catch _ { }
+            }
+        }
+}
+
+

@@ -89,7 +89,7 @@ class SignUpViewController: UIViewController {
         
         // Perform signup process
         performSignup(with: username, email: email, password: password)
-        performSegue(withIdentifier: "SegueToRecipeListing", sender: self)
+//        performSegue(withIdentifier: "SegueToRecipeListing", sender: self)
     }
     
     //creating segue to print username in nameLabel
