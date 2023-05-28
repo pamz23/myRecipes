@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		208ACEFB2A1A411200F9FF2D /* settingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208ACEFA2A1A411200F9FF2D /* settingViewController.swift */; };
-		20CA6DA42A1F878C00DDD281 /* addPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CA6DA32A1F878C00DDD281 /* addPhotoViewController.swift */; };
 		431B88652A1F42A800052F54 /* GroceryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431B88642A1F42A800052F54 /* GroceryListViewController.swift */; };
 		431B88682A1F42E900052F54 /* GroceryListItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431B88662A1F42E900052F54 /* GroceryListItem+CoreDataClass.swift */; };
 		431B88692A1F42E900052F54 /* GroceryListItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431B88672A1F42E900052F54 /* GroceryListItem+CoreDataProperties.swift */; };
@@ -51,7 +50,6 @@
 
 /* Begin PBXFileReference section */
 		208ACEFA2A1A411200F9FF2D /* settingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingViewController.swift; sourceTree = "<group>"; };
-		20CA6DA32A1F878C00DDD281 /* addPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addPhotoViewController.swift; sourceTree = "<group>"; };
 		431B88642A1F42A800052F54 /* GroceryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListViewController.swift; sourceTree = "<group>"; };
 		431B88662A1F42E900052F54 /* GroceryListItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroceryListItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		431B88672A1F42E900052F54 /* GroceryListItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroceryListItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -119,13 +117,11 @@
 				8D4656812A00E1960027F9B0 /* ViewController.swift */,
 				4D3180AB2A09E0CE005E7EB3 /* SignUpViewController.swift */,
 				8DA5652D2A0A017700994C39 /* SignInViewController.swift */,
-				8D7446BC2A0A0B8A007CB693 /* RecipeListingViewController.swift */,
 				431B88642A1F42A800052F54 /* GroceryListViewController.swift */,
 				208ACEFA2A1A411200F9FF2D /* settingViewController.swift */,
 				8D850FC12A1E639E00C43873 /* RecipeListingViewController.swift */,
 				8D382C1C2A1E6AAB006AA86F /* IndividualRecipeViewController.swift */,
 				8DBA2A2E2A220C7F007AB0F4 /* FavouriteRecipesViewController.swift */,
-				20CA6DA32A1F878C00DDD281 /* addPhotoViewController.swift */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -189,8 +185,6 @@
 				8D382C1F2A1E6CC1006AA86F /* Recipe+CoreDataProperties.swift */,
 				431B88662A1F42E900052F54 /* GroceryListItem+CoreDataClass.swift */,
 				431B88672A1F42E900052F54 /* GroceryListItem+CoreDataProperties.swift */,
-				8D74475E2A15B2F6007CB693 /* Recipe+CoreDataClass.swift */,
-				8D74475F2A15B2F6007CB693 /* Recipe+CoreDataProperties.swift */,
 				8D74475B2A15B10A007CB693 /* Recipes.xcdatamodeld */,
 			);
 			path = Database;
@@ -331,19 +325,16 @@
 				431B88682A1F42E900052F54 /* GroceryListItem+CoreDataClass.swift in Sources */,
 				8D4656822A00E1960027F9B0 /* ViewController.swift in Sources */,
 				8D850FC22A1E639E00C43873 /* RecipeListingViewController.swift in Sources */,
-				8D7447602A15B2F6007CB693 /* Recipe+CoreDataClass.swift in Sources */,
 				431B88692A1F42E900052F54 /* GroceryListItem+CoreDataProperties.swift in Sources */,
 				8DA5652E2A0A017700994C39 /* SignInViewController.swift in Sources */,
 				8D46567E2A00E1960027F9B0 /* AppDelegate.swift in Sources */,
 				8D382C202A1E6CC1006AA86F /* Recipe+CoreDataClass.swift in Sources */,
 				8DBA2A2F2A220C7F007AB0F4 /* FavouriteRecipesViewController.swift in Sources */,
 				431B88652A1F42A800052F54 /* GroceryListViewController.swift in Sources */,
-				8D7446BD2A0A0B8A007CB693 /* RecipeListingViewController.swift in Sources */,
 				8D74475D2A15B10A007CB693 /* Recipes.xcdatamodeld in Sources */,
 				8D382C1D2A1E6AAB006AA86F /* IndividualRecipeViewController.swift in Sources */,
 				208ACEFB2A1A411200F9FF2D /* settingViewController.swift in Sources */,
 				8D382C212A1E6CC1006AA86F /* Recipe+CoreDataProperties.swift in Sources */,
-				20CA6DA42A1F878C00DDD281 /* addPhotoViewController.swift in Sources */,
 				8D4656802A00E1960027F9B0 /* SceneDelegate.swift in Sources */,
 				4D3180AC2A09E0CE005E7EB3 /* SignUpViewController.swift in Sources */,
 			);

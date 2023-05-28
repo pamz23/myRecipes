@@ -89,12 +89,12 @@ class SignUpViewController: UIViewController {
         
         // Perform signup process
         performSignup(with: username, email: email, password: password)
-//        performSegue(withIdentifier: "SegueToRecipeListing", sender: self)
+        performSegue(withIdentifier: "segueFromSignUpToMain", sender: self)
     }
     
     //creating segue to print username in nameLabel
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToSettingA" {
+        if segue.identifier == "goToMain" {
             if let dest = segue.destination as? settingViewController {
                 dest.nameLabel.text = yourName.text
             }
@@ -102,6 +102,6 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func goToDestination(_ sender: UITextField) {
-        performSegue(withIdentifier: "goToSettingA", sender: self)
+        performSegue(withIdentifier: "goToMain", sender: self)
     }
 }

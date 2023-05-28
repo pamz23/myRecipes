@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mnq-0P-AmR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mnq-0P-AmR">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -65,16 +66,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Sign up now"/>
                                 <connections>
-                                    <segue destination="M2c-i5-Tla" kind="show" id="r1j-iD-nju"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TtR-kg-v77">
-                                <rect key="frame" x="118" y="732" width="185" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Test Flow (Temp Btn)"/>
-                                <connections>
-                                    <segue destination="s2f-Qt-2ri" kind="show" id="HrL-jk-Bnf"/>
+                                    <segue destination="M2c-i5-Tla" kind="show" identifier="SegueToRecipeListing" id="r1j-iD-nju"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -136,7 +128,6 @@
                                 <buttonConfiguration key="configuration" style="tinted" title="Sign Up"/>
                                 <connections>
                                     <action selector="signupButtonTapped:" destination="M2c-i5-Tla" eventType="touchUpInside" id="yyf-wp-0Uk"/>
-                                    <segue destination="JGg-cr-cJ1" kind="show" identifier="SegueToRecipeListing" id="fwU-6t-adf"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalCompressionResistancePriority="751" restorationIdentifier="yourUsername" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nHB-64-NqQ">
@@ -190,6 +181,7 @@
                         <outlet property="youPassword" destination="0wv-ag-Kyr" id="9tl-cu-Xfe"/>
                         <outlet property="yourEmail" destination="Fk0-7H-ffK" id="iI6-Me-csg"/>
                         <outlet property="yourName" destination="nHB-64-NqQ" id="bmD-lr-b5N"/>
+                        <segue destination="fhO-c9-d9B" kind="show" identifier="segueFromSignUpToMain" id="WIx-1u-t8t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2GY-vb-pc0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -264,7 +256,7 @@
                         <outlet property="password" destination="gHx-XG-a3h" id="9bP-qn-f1l"/>
                         <outlet property="signIn" destination="75Z-n3-JvY" id="k1E-RS-7na"/>
                         <outlet property="username" destination="3ai-gn-kiU" id="8Y1-ff-UGL"/>
-                        <segue destination="JGg-cr-cJ1" kind="show" identifier="SegueToRecipeListingA" id="K0g-nQ-YU8"/>
+                        <segue destination="JGg-cr-cJ1" kind="show" identifier="segueFromSignInToMain" id="Zfu-rw-Ziw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aep-SA-wed" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -340,15 +332,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UDt-qi-9XC">
-                                <rect key="frame" x="-3" y="768" width="394" height="47"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem systemItem="favorites" id="v7l-RL-mA7"/>
-                                    <tabBarItem systemItem="more" id="1Xt-8Q-1fO"/>
-                                </items>
-                            </tabBar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jaQ-j2-6pq">
                                 <rect key="frame" x="253" y="100" width="110" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -357,6 +340,7 @@
                         <viewLayoutGuide key="safeArea" id="hlF-Nz-0Fv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="person.crop.circle" catalog="system" id="FDz-wJ-bpo"/>
                     <navigationItem key="navigationItem" id="8ed-V1-fXI"/>
                     <connections>
                         <outlet property="changeNameBtn" destination="yxq-nm-Axw" id="MXK-da-FVl"/>
@@ -370,6 +354,27 @@
                 <exit id="uLl-h9-x6e" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3403.8167938931297" y="3.5211267605633805"/>
+        </scene>
+        <!--TabBarController-->
+        <scene sceneID="pG4-yC-J50">
+            <objects>
+                <tabBarController title="TabBarController" id="fhO-c9-d9B" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="0F6-zq-bgx"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ejN-F6-JWp">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="JGg-cr-cJ1" kind="relationship" relationship="viewControllers" id="AnO-n8-eE6"/>
+                        <segue destination="soh-pp-xEE" kind="relationship" relationship="viewControllers" id="vpd-gN-29E"/>
+                        <segue destination="voE-pJ-GHY" kind="relationship" relationship="viewControllers" id="hLC-zP-VOG"/>
+                        <segue destination="s2f-Qt-2ri" kind="relationship" relationship="viewControllers" id="l5t-lk-rDr"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ju0-Bj-QEp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1749" y="463"/>
         </scene>
         <!--RecipeListingViewController-->
         <scene sceneID="Hrm-Hq-qLA">
@@ -429,6 +434,7 @@
                             <constraint firstItem="aHV-VJ-TJO" firstAttribute="top" secondItem="Ycn-oX-ch7" secondAttribute="top" id="ecq-HG-Iab"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Recipes" image="fork.knife.circle" catalog="system" id="D3Q-MY-hwW"/>
                     <navigationItem key="navigationItem" title="Recipes" id="VfJ-N8-1iY">
                         <barButtonItem key="rightBarButtonItem" image="cart" catalog="system" id="OsO-p1-07A">
                             <connections>
@@ -481,6 +487,7 @@
                             <constraint firstItem="gAV-4A-3FJ" firstAttribute="top" secondItem="l3y-jT-DHS" secondAttribute="top" id="j4N-ag-rPM"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Grocery List" image="list.bullet.clipboard" catalog="system" id="prJ-6B-MDM"/>
                     <navigationItem key="navigationItem" id="4jo-CX-BdQ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9b-5N-1rh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -646,7 +653,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VbF-0T-dwY">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="117" id="X9O-4U-6x9" customClass="FavouriteRecipeTableViewCell" customModule="myRecipes" customModuleProvider="target">
@@ -695,6 +702,7 @@
                             <constraint firstItem="VbF-0T-dwY" firstAttribute="top" secondItem="5hg-nG-ylr" secondAttribute="top" id="hJW-tM-UlN"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Favourites" image="heart" catalog="system" id="Gqa-c3-gub"/>
                     <navigationItem key="navigationItem" title="Favourites" id="w6d-9k-bQ4"/>
                     <connections>
                         <outlet property="favouriteTableView" destination="VbF-0T-dwY" id="Rp5-HD-MTq"/>
@@ -707,10 +715,15 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Ir9-Eb-OHO"/>
-        <segue reference="K0g-nQ-YU8"/>
+        <segue reference="v5D-ty-fng"/>
+        <segue reference="Zfu-rw-Ziw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="cart" catalog="system" width="128" height="102"/>
+        <image name="fork.knife.circle" catalog="system" width="128" height="123"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="list.bullet.clipboard" catalog="system" width="103" height="128"/>
+        <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <image name="unheart" width="225" height="225"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

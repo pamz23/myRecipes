@@ -64,7 +64,7 @@ class SignInViewController: UIViewController {
             if validateCredentials(username: username, email: email, password: password) {
                 // Successful sign-in
 
-                performSegue(withIdentifier: "SegueToRecipeListingA", sender: self) //Manual Segue
+                performSegue(withIdentifier: "segueFromSignInToMain", sender: self) //Manual Segue
                 // Navigate to the next screen or perform any necessary actions
                 
             } else {
