@@ -20,7 +20,6 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         // Disable the sign-up button initially
             signUp.isEnabled = false
@@ -94,14 +93,15 @@ class SignUpViewController: UIViewController {
     }
     
     //creating segue to print username in nameLabel
-    
-    /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToSettingA" {
-            let destinationVC = segue.destination as! settingViewController
-            destinationVC.username = yourName.text
+            if let dest = segue.destination as? settingViewController {
+                dest.nameLabel.text = yourName.text
+            }
         }
     }
-     */
-
+    
+    @IBAction func goToDestination(_ sender: UITextField) {
+        performSegue(withIdentifier: "goToSettingA", sender: self)
+    }
 }

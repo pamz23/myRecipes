@@ -63,26 +63,37 @@ class SignInViewController: UIViewController {
             // Validate the username, email, and password
             if validateCredentials(username: username, email: email, password: password) {
                 // Successful sign-in
-                showAlert(withTitle: "Success", message: "Sign-in successful!")
 
                 performSegue(withIdentifier: "SegueToRecipeListingA", sender: self) //Manual Segue
-                
                 // Navigate to the next screen or perform any necessary actions
+                
             } else {
                 // Failed sign-in
                 showAlert(withTitle: "Error", message: "Invalid username, email, or password.")
             }
-        
     }
 
     //validates the credentials for all texifields
     func validateCredentials(username: String, email: String, password: String) -> Bool {
-        let validUsername = "myusername"
-        let validEmail = "myemail"
-        let validPassword = "mypassword"
-        
-        return username == validUsername && email == validEmail && password == validPassword
+        // Validate username
+        if username.isEmpty {
+            return false
+        }
+           
+        // Validate email - the email must contain "@" and "."
+        if !email.contains("@") || !email.contains(".") {
+            return false
+        }
+           
+        // Validate password - checks if the password has at least 6 characters
+        if password.count < 6 {
+            return false
+        }
+           
+        // If all validation checks pass, return true
+        return true
     }
+ 
 
     //function to display of alert with title and message to the user
     func showAlert(withTitle title: String, message: String) {
@@ -93,15 +104,15 @@ class SignInViewController: UIViewController {
     }
     
     //creating segue to print username in nameLabel
-    
-    /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToSettingB" {
-            let dest = segue.destination as! settingViewController
-            dest.nameLabel.text = username.text
+            if let dest = segue.destination as? settingViewController {
+                dest.nameLabel.text = username.text
+            }
         }
     }
-    */
-
     
+    @IBAction func goToDestination(_ sender: UITextField) {
+        performSegue(withIdentifier: "goToSettingB", sender: self)
+    }
 }
