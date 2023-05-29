@@ -1,4 +1,3 @@
-//
 //  IndividualRecipeViewController.swift
 //  myRecipes
 //
@@ -22,7 +21,6 @@ class IndividualRecipeViewController: UIViewController {
     
     var indivRecipe: Recipe?
     var favImage: UIImage?
-    var vc =  GroceryListViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +28,7 @@ class IndividualRecipeViewController: UIViewController {
         //update the labels for the selected recipe
         recipeNameLabel.text = indivRecipe?.name
         ingredientsLabel.text = indivRecipe?.ingredients?.joined(separator: "\n")
+        ingredientsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50).isActive = true
         instructionsLabel.text = indivRecipe?.steps?.joined(separator: "\n")
         timeTakenLabel.text = "Time taken: \(indivRecipe?.timeTaken ?? "error")"
         servesLabel.text = "Serves: \(indivRecipe?.serves ?? "error")"
@@ -57,16 +56,16 @@ class IndividualRecipeViewController: UIViewController {
         guard let count = UserDefaults().value(forKey: "count") as? Int else {
             return
         }
-
-        var newCount = 0
-
+        let groceryListVC = self.tabBarController?.viewControllers?.first(where: { $0 is GroceryListViewController }) as? GroceryListViewController
+        var newCount = count
+        
         for i in ingredients {
-            newCount = count + 1
+            newCount += 1
             UserDefaults().set(newCount, forKey: "count")
             UserDefaults().set(i, forKey: "ingredient_\(newCount)")
+            UserDefaults.standard.synchronize()
         }
-
-        vc.updateTask()
+        
     }
     // favourites button
     @IBAction func pressButton(_ sender: Any) {
@@ -102,5 +101,3 @@ extension UIImage {
         return newImage!
     }
 }
-
-
