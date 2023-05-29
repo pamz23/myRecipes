@@ -11,17 +11,17 @@ import CoreData
 
 
 class GroceryListViewController: UIViewController {
-    
+
     private var models = [String]()
-    
+
     @IBOutlet weak var tableView: UITableView!
-    
+
 //    let tableView: UITableView = {
 //        let table = UITableView()
 //        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
 //        return table
 //    }()
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         super.tabBarController?.title = "Grocery List"
@@ -45,8 +45,9 @@ class GroceryListViewController: UIViewController {
             }
         }
         print("Reload Data Model \(models)")
+        tableView.reloadData()
     }
-    
+
 //    func reloadData(){
 //        models.removeAll()
 //        guard let count = UserDefaults().value(forKey: "count") as? Int else {
@@ -64,18 +65,32 @@ class GroceryListViewController: UIViewController {
     @IBAction func clearAll(_ sender: Any) {
         models.removeAll()
         tableView.reloadData()
+
+        // Remove all ingredients from UserDefaults
+        guard let count = UserDefaults.standard.value(forKey: "count") as? Int else {
+            return
+        }
+
+        for x in 0..<count {
+            let key = "ingredient_\(x)"
+            UserDefaults.standard.removeObject(forKey: key)
+        }
+
+        // Reset the count to 0 and setup flag to false
+        UserDefaults.standard.set(0, forKey: "count")
+        UserDefaults.standard.set(false, forKey: "setup")
     }
     func deleteIngredient(at indexPath: IndexPath) {
         let ingredient = models[indexPath.row]
         models.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .fade)
-            
-            
+
+
         guard let count = UserDefaults().value(forKey: "count") as? Int else {
             return
         }
-            
-            
+
+
         for x in 1...count {
             let key = "ingredient_\(x)"
             if let storedIngredient = UserDefaults.standard.string(forKey: key), storedIngredient == ingredient {
@@ -83,8 +98,8 @@ class GroceryListViewController: UIViewController {
                 break
             }
         }
-            
-            
+
+
         UserDefaults.standard.set(count - 1, forKey: "count")
     }
 //    func updateTask() {
@@ -104,7 +119,7 @@ class GroceryListViewController: UIViewController {
 
 }
 
-extension GroceryListViewController: UITableViewDelegate{
+extension GroceryListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -115,17 +130,17 @@ extension GroceryListViewController: UITableViewDelegate{
     }
 }
 
-extension GroceryListViewController: UITableViewDataSource{
+extension GroceryListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = models[indexPath.row]
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }

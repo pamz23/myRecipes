@@ -80,7 +80,7 @@ class SignUpViewController: UIViewController {
                 credentials.append(User(username: username, email: email, password: password))
                 let encodedData = try? PropertyListEncoder().encode(credentials)
                 UserDefaults.standard.set(encodedData, forKey: "credentials")
-
+                UserDefaults.standard.set(false, forKey: "setup")
                 // Perform the segue after the data is stored
                 performSegue(withIdentifier: "segueFromSignUpToMain", sender: self)
             }

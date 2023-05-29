@@ -50,6 +50,10 @@ class IndividualRecipeViewController: UIViewController {
     
     @IBAction func addIngredientButton(_ sender: Any) {
         print("here")
+        if !UserDefaults().bool(forKey: "setup") {
+            UserDefaults().set(true, forKey: "setup")
+            UserDefaults().set(0, forKey: "count")
+        }
         guard let recipe = indivRecipe, let ingredients = recipe.ingredients else {
                 return
         }
