@@ -284,7 +284,7 @@
                         <outlet property="password" destination="gHx-XG-a3h" id="9bP-qn-f1l"/>
                         <outlet property="signIn" destination="75Z-n3-JvY" id="k1E-RS-7na"/>
                         <outlet property="username" destination="3ai-gn-kiU" id="8Y1-ff-UGL"/>
-                        <segue destination="JGg-cr-cJ1" kind="show" identifier="segueFromSignInToMain" id="Zfu-rw-Ziw"/>
+                        <segue destination="fhO-c9-d9B" kind="show" identifier="segueFromSignInToMain" id="dia-7h-HRa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aep-SA-wed" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -745,7 +745,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Ir9-Eb-OHO"/>
-        <segue reference="AnO-n8-eE6"/>
+        <segue reference="dia-7h-HRa"/>
         <segue reference="xa9-QP-n7U"/>
     </inferredMetricsTieBreakers>
     <resources>

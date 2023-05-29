@@ -49,14 +49,15 @@ class IndividualRecipeViewController: UIViewController {
     }
     
     @IBAction func addIngredientButton(_ sender: Any) {
+        print("here")
         guard let recipe = indivRecipe, let ingredients = recipe.ingredients else {
                 return
         }
-
+        
         guard let count = UserDefaults().value(forKey: "count") as? Int else {
             return
         }
-        let groceryListVC = self.tabBarController?.viewControllers?.first(where: { $0 is GroceryListViewController }) as? GroceryListViewController
+        print("here")
         var newCount = count
         
         for i in ingredients {
@@ -65,6 +66,8 @@ class IndividualRecipeViewController: UIViewController {
             UserDefaults().set(i, forKey: "ingredient_\(newCount)")
             UserDefaults.standard.synchronize()
         }
+        print("Make new ingre")
+        
         
     }
     // favourites button

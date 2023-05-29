@@ -23,7 +23,7 @@ class GroceryListViewController: UIViewController {
 //    }()
     
     override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
+        super.viewWillAppear(animated)
         super.tabBarController?.title = "Grocery List"
         self.tabBarController!.navigationItem.hidesBackButton = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -44,12 +44,24 @@ class GroceryListViewController: UIViewController {
                 models.append(ingredient)
             }
         }
-        print("THE MODEL IS \(models)")
+        print("Reload Data Model \(models)")
     }
     
+//    func reloadData(){
+//        models.removeAll()
+//        guard let count = UserDefaults().value(forKey: "count") as? Int else {
+//            return
+//        }
+//        for x in 0..<count {
+//            let key = "ingredient_\(x)"
+//            if let ingredient = UserDefaults.standard.string(forKey: key) {
+//                models.append(ingredient)
+//            }
+//        }
+//        print("Reload Data Model \(models)")
+//        tableView.reloadData()
+//    }
     @IBAction func clearAll(_ sender: Any) {
-        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
-        UserDefaults.standard.synchronize()
         models.removeAll()
         tableView.reloadData()
     }
