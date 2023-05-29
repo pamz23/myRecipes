@@ -46,6 +46,12 @@ class GroceryListViewController: UIViewController {
         print("THE MODEL IS \(models)")
     }
     
+    @IBAction func clearAll(_ sender: Any) {
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        UserDefaults.standard.synchronize()
+        models.removeAll()
+        tableView.reloadData()
+    }
     func deleteIngredient(at indexPath: IndexPath) {
         let ingredient = models[indexPath.row]
         models.remove(at: indexPath.row)
