@@ -382,7 +382,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uBy-cJ-Goa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="uLl-h9-x6e" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3403.8167938931297" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="2578" y="17"/>
         </scene>
         <!--TabBarController-->
         <scene sceneID="pG4-yC-J50">

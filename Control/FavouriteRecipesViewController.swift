@@ -32,7 +32,8 @@ class FavouriteRecipesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
         // Do any additional setup after loading the view.
-
+        super.tabBarController?.title = "Favourite Recipes"
+        self.navigationItem.setHidesBackButton(true, animated: true)
         if UserDefaults.standard.bool(forKey: "isRecipesAdded") == false {
             addRecipes() // Add Sample Recipes
         }

@@ -22,18 +22,26 @@ class settingViewController: UIViewController, UIImagePickerControllerDelegate, 
     var selectedPhoto: UIImage?
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+        super.tabBarController?.title = "Settings"
+        self.navigationItem.setHidesBackButton(true, animated: true)
         // Do any additional setup after loading the view.
         updateNameLabel()
         formatProfilePhotoImgView()
     }
-    
+
     private func formatProfilePhotoImgView()
     {
         //load in placeholder image and display it in the Image View until the user uploads their profile photo
         let placeholderImage = UIImage(named: "placeholder_image")
         profilePhotoImgView.image = placeholderImage
+        if let imageData = UserDefaults.standard.data(forKey: "selectedPhoto"),
+                  let savedImage = UIImage(data: imageData) {
+                   profilePhotoImgView.image = savedImage
+               } else {
+                   profilePhotoImgView.image = placeholderImage
+               }
  
         // Make the profile photo view circular
         profilePhotoImgView.layer.cornerRadius = profilePhotoImgView.frame.size.width / 2
@@ -87,11 +95,16 @@ class settingViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let selectedImage = info[.originalImage] as? UIImage {
-            profilePhotoImgView.image = selectedImage //replace imageView with selected image from gallery.
-            changePhotoBtn.setTitle("Change your Photo", for: .normal)
-        }
-        
-        picker.dismiss(animated: true, completion: nil)
+                   profilePhotoImgView.image = selectedImage
+                   changePhotoBtn.setTitle("Change your Photo", for: .normal)
+                   
+                   // Save the selected photo to UserDefaults
+                   if let imageData = selectedImage.jpegData(compressionQuality: 1.0) {
+                       UserDefaults.standard.set(imageData, forKey: "selectedPhoto")
+                   }
+               }
+               
+               picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

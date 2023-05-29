@@ -22,8 +22,8 @@ class IndividualRecipeViewController: UIViewController {
     var indivRecipe: Recipe?
     var favImage: UIImage?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
         // Do any additional setup after loading the view.
         //update the labels for the selected recipe
         recipeNameLabel.text = indivRecipe?.name

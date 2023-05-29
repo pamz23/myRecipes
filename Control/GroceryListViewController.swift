@@ -22,8 +22,9 @@ class GroceryListViewController: UIViewController {
 //        return table
 //    }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+        super.tabBarController?.title = "Grocery List"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self

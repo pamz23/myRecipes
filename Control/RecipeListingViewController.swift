@@ -26,8 +26,10 @@ class RecipeListingViewController: UIViewController {
     var items: [Recipe]?
     var selectedRow: Int?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+        super.tabBarController?.title = "Recipes"
+        self.navigationItem.setHidesBackButton(true, animated: true)
         // Do any additional setup after loading the view.
         if UserDefaults.standard.bool(forKey: "isRecipesAdded") == false {
             addRecipes() // Add Sample Recipes
