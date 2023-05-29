@@ -29,8 +29,8 @@ class FavouriteRecipesViewController: UIViewController {
     var items: [Recipe]?
     var selectedRow: Int?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
         // Do any additional setup after loading the view.
 
         if UserDefaults.standard.bool(forKey: "isRecipesAdded") == false {
