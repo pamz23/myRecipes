@@ -28,7 +28,6 @@ class IndividualRecipeViewController: UIViewController {
         //update the labels for the selected recipe
         recipeNameLabel.text = indivRecipe?.name
         ingredientsLabel.text = indivRecipe?.ingredients?.joined(separator: "\n")
-        ingredientsLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50).isActive = true
         instructionsLabel.text = indivRecipe?.steps?.joined(separator: "\n")
         timeTakenLabel.text = "Time taken: \(indivRecipe?.timeTaken ?? "error")"
         servesLabel.text = "Serves: \(indivRecipe?.serves ?? "error")"
@@ -48,6 +47,7 @@ class IndividualRecipeViewController: UIViewController {
         recipeFav.setImage(resizedImage, for: UIControl.State.normal)
     }
     
+    // allow users to add ingredients from the recipe
     @IBAction func addIngredientButton(_ sender: Any) {
         guard let recipe = indivRecipe, let ingredients = recipe.ingredients else {
                 return
@@ -56,7 +56,7 @@ class IndividualRecipeViewController: UIViewController {
         guard let count = UserDefaults().value(forKey: "count") as? Int else {
             return
         }
-        let groceryListVC = self.tabBarController?.viewControllers?.first(where: { $0 is GroceryListViewController }) as? GroceryListViewController
+        _ = self.tabBarController?.viewControllers?.first(where: { $0 is GroceryListViewController }) as? GroceryListViewController
         var newCount = count
         
         for i in ingredients {
@@ -78,6 +78,7 @@ class IndividualRecipeViewController: UIViewController {
             container.favourite = !indivRecipe!.favourite
            try! context.save()
            context.refresh(container, mergeChanges: false)
+            // update the state of the button after it has been pressed
             if (container.favourite == true) {
                 favImage = UIImage(named: "heart.png")
             } else {
