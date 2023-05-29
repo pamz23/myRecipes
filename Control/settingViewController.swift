@@ -25,7 +25,7 @@ class settingViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
         super.tabBarController?.title = "Settings"
-        self.navigationItem.setHidesBackButton(true, animated: true)
+        self.tabBarController!.navigationItem.hidesBackButton = true
         // Do any additional setup after loading the view.
         updateNameLabel()
         formatProfilePhotoImgView()

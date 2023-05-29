@@ -29,6 +29,7 @@ class RecipeListingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
         super.tabBarController?.title = "Recipes"
+        self.tabBarController!.navigationItem.hidesBackButton = true
         self.navigationItem.setHidesBackButton(true, animated: true)
         // Do any additional setup after loading the view.
         if UserDefaults.standard.bool(forKey: "isRecipesAdded") == false {

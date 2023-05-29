@@ -25,6 +25,7 @@ class GroceryListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
         super.tabBarController?.title = "Grocery List"
+        self.tabBarController!.navigationItem.hidesBackButton = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
