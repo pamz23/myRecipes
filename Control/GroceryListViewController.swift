@@ -13,14 +13,12 @@ import CoreData
 class GroceryListViewController: UIViewController {
 
     private var models = [String]()
+    
+    var username = CurrentUser.shared.currentUser!.username
 
     @IBOutlet weak var tableView: UITableView!
+    
 
-//    let tableView: UITableView = {
-//        let table = UITableView()
-//        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-//        return table
-//    }()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -29,17 +27,17 @@ class GroceryListViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
-        if !UserDefaults().bool(forKey: "setup") {
-            UserDefaults().set(true, forKey: "setup")
-            UserDefaults().set(0, forKey: "count")
+        if !UserDefaults().bool(forKey: "setup_\(username)") {
+            UserDefaults().set(true, forKey: "setup_\(username)")
+            UserDefaults().set(0, forKey: "count_\(username)")
         }
         print("THE MODEL IS \(models)")
         models.removeAll()
-        guard let count = UserDefaults().value(forKey: "count") as? Int else {
+        guard let count = UserDefaults().value(forKey: "count_\(username)") as? Int else {
             return
         }
         for x in 0..<count {
-            let key = "ingredient_\(x)"
+            let key = "ingredient_\(username)_\(x)"
             if let ingredient = UserDefaults.standard.string(forKey: key) {
                 models.append(ingredient)
             }
@@ -67,18 +65,18 @@ class GroceryListViewController: UIViewController {
         tableView.reloadData()
 
         // Remove all ingredients from UserDefaults
-        guard let count = UserDefaults.standard.value(forKey: "count") as? Int else {
+        guard let count = UserDefaults.standard.value(forKey: "count_\(username)") as? Int else {
             return
         }
 
         for x in 0..<count {
-            let key = "ingredient_\(x)"
+            let key = "ingredient_\(username)_\(x)"
             UserDefaults.standard.removeObject(forKey: key)
         }
 
         // Reset the count to 0 and setup flag to false
-        UserDefaults.standard.set(0, forKey: "count")
-        UserDefaults.standard.set(false, forKey: "setup")
+        UserDefaults.standard.set(0, forKey: "count_\(username)")
+        UserDefaults.standard.set(false, forKey: "setup_\(username)")
     }
     func deleteIngredient(at indexPath: IndexPath) {
         let ingredient = models[indexPath.row]
@@ -86,13 +84,13 @@ class GroceryListViewController: UIViewController {
         tableView.deleteRows(at: [indexPath], with: .fade)
 
 
-        guard let count = UserDefaults().value(forKey: "count") as? Int else {
+        guard let count = UserDefaults().value(forKey: "count_\(username)") as? Int else {
             return
         }
 
 
         for x in 1...count {
-            let key = "ingredient_\(x)"
+            let key = "ingredient_\(username)_\(x)"
             if let storedIngredient = UserDefaults.standard.string(forKey: key), storedIngredient == ingredient {
                 UserDefaults.standard.removeObject(forKey: key)
                 break
@@ -100,7 +98,7 @@ class GroceryListViewController: UIViewController {
         }
 
 
-        UserDefaults.standard.set(count - 1, forKey: "count")
+        UserDefaults.standard.set(count - 1, forKey: "count_\(username)")
     }
 //    func updateTask() {
 //        models.removeAll()
