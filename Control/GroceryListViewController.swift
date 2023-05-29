@@ -10,96 +10,72 @@ import Foundation
 import CoreData
 
 
-class GroceryListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return models.count
-        
-    }
+class GroceryListViewController: UIViewController {
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = models[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = ""
-        return cell
-    }
+    private var models = [String]()
     
-    private var models = [GroceryListItem]()
+    @IBOutlet weak var tableView: UITableView!
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    let tableView: UITableView = {
-        let table = UITableView()
-        table.register(UITableView.self, forHeaderFooterViewReuseIdentifier: "cell")
-        return table
-    }()
+//    let tableView: UITableView = {
+//        let table = UITableView()
+//        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+//        return table
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.\
-        view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.frame = view.bounds
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        if !UserDefaults().bool(forKey: "setup") {
+            UserDefaults().set(true, forKey: "setup")
+            UserDefaults().set(0, forKey: "count")
+        }
+        tableView.isHidden = false
     }
     
-    func getAllItems(){
-            let fetchRequest: NSFetchRequest<GroceryListItem> = GroceryListItem.fetchRequest()
-            
-            do {
-                models = try context.fetch(fetchRequest)
-                
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+    func updateTask() {
+        models.removeAll()
+        guard let count = UserDefaults().value(forKey: "count") as? Int else {
+            return
+        }
+        for x in 0..<count {
+            if let task = UserDefaults().value(forKey: "ingredient_\(x+1)") as? String {
+                models.append(task)
             }
-            catch {
-                print("Error fetching grocery items: \(error)")
-            }
         }
-    
-    func createItem(nameItem: String, amountItem: String){
-        let newItem = GroceryListItem(context: context)
-        newItem.name = nameItem
-        newItem.amount = amountItem
-        do {
-            try context.save()
-            getAllItems()
-        }
-        catch {
-            
-        }
+        print(models)
+        tableView?.reloadData()
     }
-    
-    func deleteItem(item: GroceryListItem){
-        context.delete(item)
-        
-        do {
-            try context.save()
-        }
-        catch {
-            
-        }
+
+}
+
+extension GroceryListViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    func updatedItem(item: GroceryListItem, newName: String){
-        item.name = newName
-        do{
-            try context.save()
-        }
-        catch {
-            
-        }
-    }
-    /*
+}
+
+extension GroceryListViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return models.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = models[indexPath.row]
+        return cell
     }
-     */
-     
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            tableView.beginUpdates()
+            models.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+        }
+    }
 }
-
-

@@ -22,6 +22,7 @@ class IndividualRecipeViewController: UIViewController {
     
     var indivRecipe: Recipe?
     var favImage: UIImage?
+    var vc =  GroceryListViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,25 @@ class IndividualRecipeViewController: UIViewController {
         recipeFav.setImage(resizedImage, for: UIControl.State.normal)
     }
     
+    @IBAction func addIngredientButton(_ sender: Any) {
+        guard let recipe = indivRecipe, let ingredients = recipe.ingredients else {
+                return
+        }
+
+        guard let count = UserDefaults().value(forKey: "count") as? Int else {
+            return
+        }
+
+        var newCount = 0
+
+        for i in ingredients {
+            newCount = count + 1
+            UserDefaults().set(newCount, forKey: "count")
+            UserDefaults().set(i, forKey: "ingredient_\(newCount)")
+        }
+
+        vc.updateTask()
+    }
     // favourites button
     @IBAction func pressButton(_ sender: Any) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

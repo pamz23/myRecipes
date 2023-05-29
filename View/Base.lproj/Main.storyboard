@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mnq-0P-AmR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mnq-0P-AmR">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -468,7 +467,7 @@
         <!--GroceryListViewController-->
         <scene sceneID="H95-aP-89B">
             <objects>
-                <viewController storyboardIdentifier="GroceryListViewController" title="GroceryListViewController" id="voE-pJ-GHY" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GroceryListViewController" title="GroceryListViewController" id="voE-pJ-GHY" customClass="GroceryListViewController" customModule="myRecipes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vvh-bo-bsm">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -476,6 +475,20 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gAV-4A-3FJ">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="OOr-Cv-QUT">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OOr-Cv-QUT" id="3Iu-tS-yDC">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="voE-pJ-GHY" id="3dR-fE-00R"/>
+                                    <outlet property="delegate" destination="voE-pJ-GHY" id="62f-pt-FI2"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="l3y-jT-DHS"/>
@@ -489,6 +502,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Grocery List" image="list.bullet.clipboard" catalog="system" id="prJ-6B-MDM"/>
                     <navigationItem key="navigationItem" id="4jo-CX-BdQ"/>
+                    <connections>
+                        <outlet property="tableView" destination="gAV-4A-3FJ" id="XtW-Pi-aIH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9b-5N-1rh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -576,11 +592,21 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4qk-js-FUf">
+                                                <rect key="frame" x="302" y="323" width="75" height="35"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="tinted" title="+ Add"/>
+                                                <connections>
+                                                    <action selector="addIngredientButton:" destination="z9P-QA-6z5" eventType="touchUpInside" id="fjJ-l6-nEf"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <accessibility key="accessibilityConfiguration" label="Content View"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="7Mo-Ht-uNW" secondAttribute="trailing" constant="8" id="0ue-ZS-lKl"/>
+                                            <constraint firstItem="4qk-js-FUf" firstAttribute="top" secondItem="7Mo-Ht-uNW" secondAttribute="bottom" constant="0.67000000000000004" id="1ei-ut-ecy"/>
+                                            <constraint firstItem="4qk-js-FUf" firstAttribute="leading" secondItem="knV-wt-xOY" secondAttribute="leading" constant="302" id="4h9-op-zha"/>
                                             <constraint firstItem="7Mo-Ht-uNW" firstAttribute="leading" secondItem="knV-wt-xOY" secondAttribute="leading" constant="8" id="5k5-Hy-4tx"/>
                                             <constraint firstAttribute="trailing" secondItem="qlQ-t6-Way" secondAttribute="trailing" constant="8" id="8Dd-b4-OYm"/>
                                             <constraint firstAttribute="bottom" secondItem="dDI-VQ-xmx" secondAttribute="bottom" constant="8" id="8UV-yX-Xd3"/>
@@ -588,6 +614,7 @@
                                             <constraint firstAttribute="trailing" secondItem="F4u-QW-Xhd" secondAttribute="trailing" constant="8" id="BEQ-ab-icO"/>
                                             <constraint firstAttribute="trailing" secondItem="aWa-6H-ghG" secondAttribute="trailing" constant="8" id="DgO-pI-agU"/>
                                             <constraint firstItem="5li-fZ-bPC" firstAttribute="leading" secondItem="knV-wt-xOY" secondAttribute="leading" constant="8" id="EIH-uf-ZDb"/>
+                                            <constraint firstAttribute="trailing" secondItem="4qk-js-FUf" secondAttribute="trailing" constant="16" id="EPT-Xs-ka7"/>
                                             <constraint firstItem="aWa-6H-ghG" firstAttribute="leading" secondItem="knV-wt-xOY" secondAttribute="leading" constant="8" id="ErP-JM-C9N"/>
                                             <constraint firstAttribute="trailing" secondItem="0xO-A0-Hll" secondAttribute="trailing" constant="8" id="Hpw-w6-JXZ"/>
                                             <constraint firstItem="0xO-A0-Hll" firstAttribute="leading" secondItem="5li-fZ-bPC" secondAttribute="trailing" constant="55" id="IKo-Ab-PaQ"/>
@@ -603,6 +630,7 @@
                                             <constraint firstItem="dDI-VQ-xmx" firstAttribute="top" secondItem="VZj-lv-gp2" secondAttribute="bottom" constant="8" id="hSf-5h-whh"/>
                                             <constraint firstItem="5li-fZ-bPC" firstAttribute="top" secondItem="F4u-QW-Xhd" secondAttribute="bottom" constant="8" id="ne4-vJ-fMa"/>
                                             <constraint firstAttribute="trailing" secondItem="qlQ-t6-Way" secondAttribute="trailing" constant="8" id="oMr-p7-VwK"/>
+                                            <constraint firstItem="4qk-js-FUf" firstAttribute="leading" secondItem="knV-wt-xOY" secondAttribute="leading" constant="302" id="ogt-cn-aFY"/>
                                             <constraint firstItem="VZj-lv-gp2" firstAttribute="leading" secondItem="knV-wt-xOY" secondAttribute="leading" constant="8" id="skw-ht-glE"/>
                                             <constraint firstItem="qlQ-t6-Way" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="knV-wt-xOY" secondAttribute="leading" constant="20" symbolic="YES" id="ubV-k5-IUw"/>
                                             <constraint firstItem="F4u-QW-Xhd" firstAttribute="leading" secondItem="knV-wt-xOY" secondAttribute="leading" constant="8" id="znC-8n-X1C"/>
