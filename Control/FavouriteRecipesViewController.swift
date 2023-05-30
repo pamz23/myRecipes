@@ -30,7 +30,7 @@ class FavouriteRecipesViewController: UIViewController {
     var selectedRow: Int?
 
     override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
+        super.viewWillAppear(animated)
         // Do any additional setup after loading the view.
         super.tabBarController?.title = "Favourite Recipes"
         self.tabBarController!.navigationItem.hidesBackButton = true

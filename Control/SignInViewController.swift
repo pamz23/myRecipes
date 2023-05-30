@@ -8,16 +8,16 @@
 import UIKit
 
 class SignInViewController: UIViewController {
- 
-    //declaring the properties 
+
+    //declaring the properties
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var signIn: UIButton!
 
     var currentUser: User?
-    
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -70,8 +70,8 @@ class SignInViewController: UIViewController {
             // Check if the entered credentials match any stored user
             print("Store User \(storedUsers)")
             print("Credentials \(credentials)")
-            for user in storedUsers{
-                if user.email == credentials.email, user.password == credentials.password{
+            for user in storedUsers {
+                if user.email == credentials.email, user.password == credentials.password {
                     currentUser = credentials
                     return true
                 }
@@ -88,5 +88,5 @@ class SignInViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 
- 
+
 }

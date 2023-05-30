@@ -9,15 +9,15 @@ import Foundation
 import UIKit
 import CoreData
 
-class RecipeTableViewCell: UITableViewCell{
+class RecipeTableViewCell: UITableViewCell {
     @IBOutlet weak var recipeLabel: UILabel!
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var timeTakenLabel: UILabel!
-    
+
 }
 
 class RecipeListingViewController: UIViewController {
-    
+
     //manages the recipe table view
     @IBOutlet weak var recipeTableView: UITableView!
     // Reference to managed object context
@@ -28,7 +28,7 @@ class RecipeListingViewController: UIViewController {
     var selectedRow: Int?
 
     override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
+        super.viewWillAppear(animated)
         super.tabBarController?.title = "Recipes"
         self.tabBarController!.navigationItem.hidesBackButton = true
         self.navigationItem.setHidesBackButton(true, animated: true)
@@ -78,24 +78,24 @@ extension RecipeListingViewController: UITableViewDataSource {
             cell.timeTakenLabel.text = "Time taken: \(time ?? "0")"
             cell.recipeImage.image = UIImage(data: recipe.image!)
             cell.recipeImage.contentMode = .scaleAspectFill
-                        NSLayoutConstraint.activate([
-                            cell.recipeImage.topAnchor.constraint(equalTo: cell.topAnchor),
-                            cell.recipeImage.leadingAnchor.constraint(equalTo: cell.leadingAnchor),
-                            cell.recipeImage.trailingAnchor.constraint(equalTo: cell.trailingAnchor),
-                            cell.recipeImage.bottomAnchor.constraint(equalTo: cell.bottomAnchor)
-                        ])
-                        cell.recipeImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
-                        cell.recipeImage.widthAnchor.constraint(equalToConstant: 70).isActive = true
+            NSLayoutConstraint.activate([
+                cell.recipeImage.topAnchor.constraint(equalTo: cell.topAnchor),
+                cell.recipeImage.leadingAnchor.constraint(equalTo: cell.leadingAnchor),
+                cell.recipeImage.trailingAnchor.constraint(equalTo: cell.trailingAnchor),
+                cell.recipeImage.bottomAnchor.constraint(equalTo: cell.bottomAnchor)
+            ])
+            cell.recipeImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            cell.recipeImage.widthAnchor.constraint(equalToConstant: 70).isActive = true
             return cell
         }
         return cell
 
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 100;//Choose your custom row height
-        }
-    
+        return 100;//Choose your custom row height
+    }
+
     //prepares for the segues with from the 'IndividualRecipeViewController'
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let selectedRow = recipeTableView.indexPathForSelectedRow!.row
@@ -104,7 +104,7 @@ extension RecipeListingViewController: UITableViewDataSource {
             VC.indivRecipe = self.items![selectedRow]
         }
     }
-    
+
 
 
 }
