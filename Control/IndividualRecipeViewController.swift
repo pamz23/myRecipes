@@ -36,6 +36,7 @@ class IndividualRecipeViewController: UIViewController {
         // to resize the image to fit
         recipeImage.image = UIImage(data: indivRecipe?.image ?? Data())
         recipeImage.contentMode = .scaleAspectFill
+        recipeImage.heightAnchor.constraint(equalToConstant: 250).isActive = true
         recipeImage.widthAnchor.constraint(equalTo: recipeScrollView.widthAnchor).isActive = true
         
         if let recipe = indivRecipe, recipe.favourite == true {
@@ -44,7 +45,7 @@ class IndividualRecipeViewController: UIViewController {
             favImage = UIImage(named: "unheart.png")
         }
         let resizedImage = favImage?.resizeImage()
-        recipeFav.setImage(resizedImage, for: UIControl.State.normal)
+        recipeFav.setImage(resizedImage, for: .normal)
         
         // Set the username
         if let currentUser = CurrentUser.shared.currentUser {
