@@ -21,7 +21,7 @@ class IndividualRecipeViewController: UIViewController {
     
     var indivRecipe: Recipe?
     var favImage: UIImage?
-    
+    var username = CurrentUser.shared.currentUser!.username
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
         // Do any additional setup after loading the view.
@@ -49,22 +49,29 @@ class IndividualRecipeViewController: UIViewController {
     
     // allow users to add ingredients from the recipe
     @IBAction func addIngredientButton(_ sender: Any) {
+        print("here")
+        if !UserDefaults().bool(forKey: "setup_\(username)") {
+            UserDefaults().set(true, forKey: "setup_\(username)")
+            UserDefaults().set(0, forKey: "count_\(username)")
+        }
         guard let recipe = indivRecipe, let ingredients = recipe.ingredients else {
                 return
         }
-
-        guard let count = UserDefaults().value(forKey: "count") as? Int else {
+        
+        guard let count = UserDefaults().value(forKey: "count_\(username)") as? Int else {
             return
         }
-        _ = self.tabBarController?.viewControllers?.first(where: { $0 is GroceryListViewController }) as? GroceryListViewController
+        print("here")
         var newCount = count
         
         for i in ingredients {
             newCount += 1
-            UserDefaults().set(newCount, forKey: "count")
-            UserDefaults().set(i, forKey: "ingredient_\(newCount)")
+            UserDefaults().set(newCount, forKey: "count_\(username)")
+            UserDefaults().set(i, forKey: "ingredient_\(username)_\(newCount)")
             UserDefaults.standard.synchronize()
         }
+        print("Make new ingre")
+        
         
     }
     // favourites button
