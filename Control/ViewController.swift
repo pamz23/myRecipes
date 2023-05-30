@@ -9,13 +9,14 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    //declaring properties
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
+    //overriding the method from the UIViewController class
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.setHidesBackButton(true, animated: true)
-        // Do any additional setup after loading the view.
     }
     
 }

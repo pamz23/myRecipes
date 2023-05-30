@@ -18,6 +18,7 @@ class RecipeTableViewCell: UITableViewCell{
 
 class RecipeListingViewController: UIViewController {
     
+    //manages the recipe table view
     @IBOutlet weak var recipeTableView: UITableView!
     // Reference to managed object context
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -96,6 +97,7 @@ extension RecipeListingViewController: UITableViewDataSource {
             return 100;//Choose your custom row height
         }
     
+    //prepares for the segues with from the 'IndividualRecipeViewController'
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let selectedRow = recipeTableView.indexPathForSelectedRow!.row
         if segue.identifier == "goToIndividualRecipeViewController" {

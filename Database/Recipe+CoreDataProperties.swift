@@ -12,10 +12,12 @@ import CoreData
 
 extension Recipe {
 
+    //fetching instances of the recipe entity
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Recipe> {
         return NSFetchRequest<Recipe>(entityName: "Recipe")
     }
 
+    //declaring properties of the Recipe class
     @NSManaged public var favourite: Bool
     @NSManaged public var image: Data?
     @NSManaged public var ingredients: [String]?

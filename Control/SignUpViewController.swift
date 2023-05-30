@@ -21,8 +21,10 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var youPassword: UITextField!
     @IBOutlet weak var signUp: UIButton!
 
+    //an array of dicstionaries - each dictionary represents a user with string keys and values
     var users: [[String: String]] = []
 
+    //optional instance of the user struct
     var currentUser: User?
 
     override func viewDidLoad() {
@@ -63,12 +65,14 @@ class SignUpViewController: UIViewController {
         }
         return false
     }
-    
+    //checking if email is valid
     func isValidEmail(_ email: String) -> Bool {
         let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailCheck = NSPredicate(format: "SELF MATCHES %@", emailFormat)
         return emailCheck.evaluate(with: email)
     }
+    
+    //checks if the username is taken
     func isUsernameTaken(_ username: String) -> Bool {
         if let data = UserDefaults.standard.data(forKey: "credentials") {
             if let credentials = try? PropertyListDecoder().decode([User].self, from: data) {
@@ -77,7 +81,7 @@ class SignUpViewController: UIViewController {
         }
         return false
     }
-    
+    //checking is the email is previously used
     func isEmailUsed(_ email: String) -> Bool {
         if let data = UserDefaults.standard.data(forKey: "credentials") {
             if let credentials = try? PropertyListDecoder().decode([User].self, from: data) {
@@ -95,15 +99,14 @@ class SignUpViewController: UIViewController {
 //        ]
         CurrentUser.shared.currentUser = User(username: username, email: email, password: password)
 
-        
-        // Your signup logic here
-        // This is where you would typically make an API call to register the user
+        //sign up logic - checking if user credentials exist in the userdefaults
         if let data = UserDefaults.standard.data(forKey: "credentials") {
             if var credentials = try? PropertyListDecoder().decode([User].self, from: data) {
                 credentials.append(User(username: username, email: email, password: password))
                 let encodedData = try? PropertyListEncoder().encode(credentials)
                 UserDefaults.standard.set(encodedData, forKey: "credentials")
                 UserDefaults.standard.set(false, forKey: "setup_\(username)")
+               
                 // Perform the segue after the data is stored
                 let alert = UIAlertController(title: "Congratulation!", message: "Registered succesfully!", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
@@ -140,24 +143,29 @@ class SignUpViewController: UIViewController {
             print("Error, please fill in all the fields")
             return
         }
+        //checking if there is existing existing user credentials data stored in the user defualt
         if let data = UserDefaults.standard.data(forKey: "credentials") {
+            //if there is, it attemps to decode the data of an array of 'User' objects using a 'PropertyListDecoder'
             if let credentials = try? PropertyListDecoder().decode([User].self, from: data) {
                 print(credentials)
             }
         }
         
+        //check is entered username is taken
         guard !isUsernameTaken(username) else {
             let alert = UIAlertController(title: "Error!", message: "Username already taken!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated:true, completion:nil )
             return
         }
+        //chekcing if the entered email is valid
         guard isValidEmail(email) else {
             let alert = UIAlertController(title: "Error!", message: "Please enter valid email!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated:true, completion:nil )
             return
         }
+        //checks if the entered email is used
         guard !isEmailUsed(email) else {
             let alert = UIAlertController(title: "Error!", message: "Email aready exist!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

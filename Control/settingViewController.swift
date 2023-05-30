@@ -11,7 +11,7 @@ import UIKit
 
 class settingViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-
+    //declaring properties
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profilePhotoImgView: UIImageView!
     @IBOutlet weak var changeNameBtn: UIButton!
@@ -26,13 +26,13 @@ class settingViewController: UIViewController, UIImagePickerControllerDelegate, 
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        super.tabBarController?.title = "Settings"
-        self.tabBarController!.navigationItem.hidesBackButton = true
-        // Do any additional setup after loading the view.
-        currentUser = CurrentUser.shared.currentUser
-        updateNameLabel()
+        super.tabBarController?.title = "Settings" //sets title of tab bar controller
+        self.tabBarController!.navigationItem.hidesBackButton = true //hides the back button in the navigation bar
+    
+        currentUser = CurrentUser.shared.currentUser //assigns the shared instance of currentUser to currentUser property
+        updateNameLabel() //updates the name label
         
-        formatProfilePhotoImgView()
+        formatProfilePhotoImgView() //handels formatting of the profile photo
     }
 
     private func formatProfilePhotoImgView()
@@ -99,9 +99,10 @@ class settingViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        //attemps to extract the selected photo from info dictionary
         if let selectedImage = info[.originalImage] as? UIImage {
-            profilePhotoImgView.image = selectedImage
-            changePhotoBtn.setTitle("Change your Photo", for: .normal)
+            profilePhotoImgView.image = selectedImage //sets the image property the the selected image
+            changePhotoBtn.setTitle("Change your Photo", for: .normal) //sets title of button
 
             // Save the selected photo to UserDefaults
             if let imageData = selectedImage.jpegData(compressionQuality: 1.0) {
@@ -109,6 +110,7 @@ class settingViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
         }
 
+        //dismisses the picker controller, removing it from the screen
         picker.dismiss(animated: true, completion: nil)
     }
 

@@ -109,6 +109,7 @@ extension FavouriteRecipesViewController: UITableViewDataSource {
         return 100;//change row height
     }
 
+    //prepares for a segue from the 'IndividualRecipeViewController'
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let selectedRow = favouriteTableView.indexPathForSelectedRow!.row
         if segue.identifier == "goToIndividualRecipeViewController" {

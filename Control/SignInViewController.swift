@@ -8,7 +8,8 @@
 import UIKit
 
 class SignInViewController: UIViewController {
-
+ 
+    //declaring the properties 
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
