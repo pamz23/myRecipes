@@ -177,16 +177,5 @@ class SignUpViewController: UIViewController {
 
     }
 
-    //creating segue to print username in nameLabel
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "goToMain" {
-//            if let dest = segue.destination as? settingViewController {
-//                dest.nameLabel.text = yourName.text
-//            }
-//        }
-//    }
-//
-//    @IBAction func goToDestination(_ sender: UITextField) {
-//        performSegue(withIdentifier: "goToMain", sender: self)
-//    }
+
 }

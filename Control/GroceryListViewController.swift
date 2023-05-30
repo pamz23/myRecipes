@@ -65,20 +65,6 @@ class GroceryListViewController: UIViewController {
                tableView.reloadData()
     }
 
-//    func reloadData(){
-//        models.removeAll()
-//        guard let count = UserDefaults().value(forKey: "count") as? Int else {
-//            return
-//        }
-//        for x in 0..<count {
-//            let key = "ingredient_\(x)"
-//            if let ingredient = UserDefaults.standard.string(forKey: key) {
-//                models.append(ingredient)
-//            }
-//        }
-//        print("Reload Data Model \(models)")
-//        tableView.reloadData()
-//    }
     @IBAction func clearAll(_ sender: Any) {
         models.removeAll() //removes all elements from the 'models' array.
             tableView.reloadData() // reloads the table view
@@ -120,20 +106,6 @@ class GroceryListViewController: UIViewController {
                UserDefaults.standard.set(count - 1, forKey: "count_\(username)")
            }
     }
-//    func updateTask() {
-//        models.removeAll()
-//        guard let count = UserDefaults().value(forKey: "count") as? Int else {
-//            return
-//        }
-//        for x in 1...count {
-//            let key = "ingredient_\(x)"
-//            if let ingredient = UserDefaults.standard.string(forKey: key) {
-//                models.append(ingredient)
-//            }
-//        }
-//        print("UPDATE MODEL\(models)")
-//        viewDidLoad()
-//    }
 
 }
 //extends the GroceryListViewController to handle the table view row selection and row deletion,
@@ -166,12 +138,5 @@ extension GroceryListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete{
-//            tableView.beginUpdates()
-//            models.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//            tableView.endUpdates()
-//        }
-//    }
+
 }
