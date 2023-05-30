@@ -30,5 +30,5 @@ Our solution aims to solve the fragmentation of finding, saving recipes and dete
 Aditi Dinesh 14186769 </br>
 Shu Hui Pamela Lim 24923512  </br>
 Saihej Bhangu 14270363 </br>
-Stine Julh 24854919 </br>
+Stine Juhl 24854919 </br>
 Thesya Evania Gabrielle 14013371 </br>
