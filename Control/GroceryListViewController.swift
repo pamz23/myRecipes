@@ -77,7 +77,10 @@ class GroceryListViewController: UIViewController {
     @IBAction func clearAll(_ sender: Any) {
         models.removeAll()
             tableView.reloadData()
-
+        guard let username = username else {
+            // Handle the case where username is nil
+            return
+        }
             // Remove all ingredients from UserDefaults
             if let count = UserDefaults.standard.value(forKey: "count_\(username)") as? Int {
                 for x in 0..<count {
@@ -94,7 +97,10 @@ class GroceryListViewController: UIViewController {
         let ingredient = models[indexPath.row]
            models.remove(at: indexPath.row)
            tableView.deleteRows(at: [indexPath], with: .fade)
-
+        guard let username = username else {
+            // Handle the case where username is nil
+            return
+        }
            if let count = UserDefaults.standard.value(forKey: "count_\(username)") as? Int {
                for x in 1...count {
                    let key = "ingredient_\(username)_\(x)"

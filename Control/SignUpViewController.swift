@@ -22,7 +22,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var signUp: UIButton!
 
     var users: [[String: String]] = []
-    
+
+    var currentUser: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,17 +63,39 @@ class SignUpViewController: UIViewController {
         }
         return false
     }
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailCheck = NSPredicate(format: "SELF MATCHES %@", emailFormat)
+        return emailCheck.evaluate(with: email)
+    }
+    func isUsernameTaken(_ username: String) -> Bool {
+        if let data = UserDefaults.standard.data(forKey: "credentials") {
+            if let credentials = try? PropertyListDecoder().decode([User].self, from: data) {
+                return credentials.contains { $0.username == username }
+            }
+        }
+        return false
+    }
+    
+    func isEmailUsed(_ email: String) -> Bool {
+        if let data = UserDefaults.standard.data(forKey: "credentials") {
+            if let credentials = try? PropertyListDecoder().decode([User].self, from: data) {
+                return credentials.contains { $0.email == email }
+            }
+        }
+        return false
+    }
 
     func performSignup(with username: String, email: String, password: String) {
-        let user: [String: String] = [
-            "name": username,
-            "email": email,
-            "password": password
-        ]
+//        let user: [String: String] = [
+//            "name": username,
+//            "email": email,
+//            "password": password
+//        ]
+        CurrentUser.shared.currentUser = User(username: username, email: email, password: password)
 
-        users.append(user)
-
-        print("User registered successfully")
+        
         // Your signup logic here
         // This is where you would typically make an API call to register the user
         if let data = UserDefaults.standard.data(forKey: "credentials") {
@@ -82,7 +105,12 @@ class SignUpViewController: UIViewController {
                 UserDefaults.standard.set(encodedData, forKey: "credentials")
                 UserDefaults.standard.set(false, forKey: "setup_\(username)")
                 // Perform the segue after the data is stored
-                performSegue(withIdentifier: "segueFromSignUpToMain", sender: self)
+                let alert = UIAlertController(title: "Congratulation!", message: "Registered succesfully!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    self.performSegue(withIdentifier: "segueFromSignUpToMain", sender: self)
+                }))
+                present(alert, animated: true, completion: nil)
+                
             }
         } else {
             let credentials = [User(username: username, email: email, password: password)]
@@ -90,7 +118,11 @@ class SignUpViewController: UIViewController {
             UserDefaults.standard.set(encodedData, forKey: "credentials")
 
             // Perform the segue after the data is stored
-            performSegue(withIdentifier: "segueFromSignUpToMain", sender: self)
+            let alert = UIAlertController(title: "Congratulation!", message: "Registered succesfully!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                self.performSegue(withIdentifier: "segueFromSignUpToMain", sender: self)
+            }))
+            present(alert, animated: true, completion: nil)
         }
 
         // Show success message
@@ -108,22 +140,45 @@ class SignUpViewController: UIViewController {
             print("Error, please fill in all the fields")
             return
         }
-
+        if let data = UserDefaults.standard.data(forKey: "credentials") {
+            if let credentials = try? PropertyListDecoder().decode([User].self, from: data) {
+                print(credentials)
+            }
+        }
+        
+        guard !isUsernameTaken(username) else {
+            let alert = UIAlertController(title: "Error!", message: "Username already taken!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated:true, completion:nil )
+            return
+        }
+        guard isValidEmail(email) else {
+            let alert = UIAlertController(title: "Error!", message: "Please enter valid email!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated:true, completion:nil )
+            return
+        }
+        guard !isEmailUsed(email) else {
+            let alert = UIAlertController(title: "Error!", message: "Email aready exist!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated:true, completion:nil )
+            return
+        }
         // Perform signup process
         performSignup(with: username, email: email, password: password)
 
     }
 
     //creating segue to print username in nameLabel
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToMain" {
-            if let dest = segue.destination as? settingViewController {
-                dest.nameLabel.text = yourName.text
-            }
-        }
-    }
-
-    @IBAction func goToDestination(_ sender: UITextField) {
-        performSegue(withIdentifier: "goToMain", sender: self)
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "goToMain" {
+//            if let dest = segue.destination as? settingViewController {
+//                dest.nameLabel.text = yourName.text
+//            }
+//        }
+//    }
+//
+//    @IBAction func goToDestination(_ sender: UITextField) {
+//        performSegue(withIdentifier: "goToMain", sender: self)
+//    }
 }

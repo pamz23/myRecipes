@@ -16,6 +16,7 @@ class SignInViewController: UIViewController {
 
     var currentUser: User?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,26 +43,29 @@ class SignInViewController: UIViewController {
 
     // Action for sign-in button
     @IBAction func signInButtonTapped(_: UIButton) {
-        // Check if all fields are filled
-        guard let username = username.text, !username.isEmpty else {
-            showAlert(withTitle: "Error", message: "Please enter your username.")
-            return
-        }
-        guard let email = email.text, !email.isEmpty else {
-            showAlert(withTitle: "Error", message: "Please enter your email.")
-            return
-        }
-        guard let password = password.text, !password.isEmpty else {
-            showAlert(withTitle: "Error", message: "Please enter your password.")
-            return
-        }
+//         Check if all fields are filled
+//        guard let username = username.text, !username.isEmpty else {
+//            showAlert(withTitle: "Error", message: "Please enter your username.")
+//            return
+//        }
+//        guard let email = email.text, !email.isEmpty else {
+//            showAlert(withTitle: "Error", message: "Please enter your email.")
+//            return
+//        }
+//        guard let password = password.text, !password.isEmpty else {
+//            showAlert(withTitle: "Error", message: "Please enter your password.")
+//            return
+//        }
+
+        let username = username.text
+        let email = email.text
+        let password = password.text
 
         // Validate the credentials
-        if validateCredentials(username: username, email: email, password: password) {
+        if validateCredentials(username: username!, email: email!, password: password!) {
             // Successful sign-in
             print("HEre")
             CurrentUser.shared.currentUser = currentUser
-            print(CurrentUser.shared.currentUser)
             performSegue(withIdentifier: "segueFromSignInToMain", sender: self)
         } else {
             print("This")
