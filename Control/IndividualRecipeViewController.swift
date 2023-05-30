@@ -19,9 +19,9 @@ class IndividualRecipeViewController: UIViewController {
     @IBOutlet weak var timeTakenLabel: UILabel!
     @IBOutlet weak var servesLabel: UILabel!
     
-    var indivRecipe: Recipe?
-    var favImage: UIImage?
-    var username: String?
+    var indivRecipe: Recipe? //Individual recipe object
+    var favImage: UIImage?  //Image for favorite button
+    var username: String? //Users username
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

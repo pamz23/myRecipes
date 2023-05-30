@@ -42,21 +42,7 @@ class SignInViewController: UIViewController {
         signIn.isEnabled = !username.isEmpty && !email.isEmpty && !password.isEmpty
     }
 
-    // Action for sign-in button
     @IBAction func signInButtonTapped(_: UIButton) {
-//         Check if all fields are filled
-//        guard let username = username.text, !username.isEmpty else {
-//            showAlert(withTitle: "Error", message: "Please enter your username.")
-//            return
-//        }
-//        guard let email = email.text, !email.isEmpty else {
-//            showAlert(withTitle: "Error", message: "Please enter your email.")
-//            return
-//        }
-//        guard let password = password.text, !password.isEmpty else {
-//            showAlert(withTitle: "Error", message: "Please enter your password.")
-//            return
-//        }
 
         let username = username.text
         let email = email.text
@@ -102,12 +88,5 @@ class SignInViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 
-    // Creating segue to print username in nameLabel
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "goToSettingB" {
-//            if let dest = segue.destination as? settingViewController {
-//                dest.currentUser = currentUser
-//            }
-//        }
-//    }
+ 
 }
