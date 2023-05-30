@@ -105,8 +105,4 @@ class SignInViewController: UIViewController {
 //            }
 //        }
 //    }
-
-    @IBAction func goToDestination(_ sender: UITextField) {
-        performSegue(withIdentifier: "goToSettingB", sender: self)
-    }
 }

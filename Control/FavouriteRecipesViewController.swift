@@ -71,9 +71,6 @@ class FavouriteRecipesViewController: UIViewController {
 
 }
 
-
-
-
 extension FavouriteRecipesViewController: UITableViewDelegate { }
 
 extension FavouriteRecipesViewController: UITableViewDataSource {
@@ -109,7 +106,7 @@ extension FavouriteRecipesViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100;//Choose your custom row height
+        return 100;//change row height
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
