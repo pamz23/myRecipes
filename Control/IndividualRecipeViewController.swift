@@ -21,10 +21,11 @@ class IndividualRecipeViewController: UIViewController {
     
     var indivRecipe: Recipe?
     var favImage: UIImage?
-    var username = CurrentUser.shared.currentUser!.username
+    var username: String?
+    
     override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-        // Do any additional setup after loading the view.
+        super.viewWillAppear(animated)
+        
         //update the labels for the selected recipe
         recipeNameLabel.text = indivRecipe?.name
         ingredientsLabel.text = indivRecipe?.ingredients?.joined(separator: "\n")
@@ -34,42 +35,58 @@ class IndividualRecipeViewController: UIViewController {
         servesLabel.text = "Serves: \(indivRecipe?.serves ?? "error")"
         
         // to resize the image to fit
-        recipeImage.image = UIImage(data: indivRecipe!.image!)
+        recipeImage.image = UIImage(data: indivRecipe?.image ?? Data())
         recipeImage.contentMode = .scaleAspectFill
         recipeImage.heightAnchor.constraint(equalToConstant: 250).isActive = true
         recipeImage.widthAnchor.constraint(equalTo: recipeScrollView.widthAnchor).isActive = true
         
-        if (indivRecipe?.favourite == true) {
+        if let recipe = indivRecipe, recipe.favourite == true {
             favImage = UIImage(named: "heart.png")
         } else {
             favImage = UIImage(named: "unheart.png")
         }
-        let resizedImage = favImage!.resizeImage()
-        recipeFav.setImage(resizedImage, for: UIControl.State.normal)
+        let resizedImage = favImage?.resizeImage()
+        recipeFav.setImage(resizedImage, for: .normal)
+        
+        // Set the username
+        if let currentUser = CurrentUser.shared.currentUser {
+            username = currentUser.username
+        } else {
+            // Handle the case where CurrentUser.shared.currentUser is nil
+            // You may want to display an error message or handle it in a different way
+        }
     }
     
     @IBAction func addIngredientButton(_ sender: Any) {
         print("here")
-        if !UserDefaults().bool(forKey: "setup_\(username)") {
-            UserDefaults().set(true, forKey: "setup_\(username)")
-            UserDefaults().set(0, forKey: "count_\(username)")
-        }
-        guard let recipe = indivRecipe, let ingredients = recipe.ingredients else {
-                return
-        }
         
-        guard let count = UserDefaults().value(forKey: "count_\(username)") as? Int else {
+        guard let username = username else {
+            // Handle the case where username is nil
             return
         }
-        print("here")
+        
+        if !UserDefaults.standard.bool(forKey: "setup_\(username)") {
+            UserDefaults.standard.set(true, forKey: "setup_\(username)")
+            UserDefaults.standard.set(0, forKey: "count_\(username)")
+        }
+        
+        guard let recipe = indivRecipe, let ingredients = recipe.ingredients else {
+            return
+        }
+        
+        guard let count = UserDefaults.standard.value(forKey: "count_\(username)") as? Int else {
+            return
+        }
+        
         var newCount = count
         
         for i in ingredients {
             newCount += 1
-            UserDefaults().set(newCount, forKey: "count_\(username)")
-            UserDefaults().set(i, forKey: "ingredient_\(username)_\(newCount)")
+            UserDefaults.standard.set(newCount, forKey: "count_\(username)")
+            UserDefaults.standard.set(i, forKey: "ingredient_\(username)_\(newCount)")
             UserDefaults.standard.synchronize()
         }
+        
         print("Make new ingre")
         
         
@@ -78,20 +95,29 @@ class IndividualRecipeViewController: UIViewController {
     @IBAction func pressButton(_ sender: Any) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let name = indivRecipe?.name
-        let fetchRequest : NSFetchRequest<Recipe> = Recipe.fetchRequest()
+        let fetchRequest: NSFetchRequest<Recipe> = Recipe.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "name == %@", name!)
         let results = try! context.fetch(fetchRequest)
+        
         if let container = results.first {
-            container.favourite = !indivRecipe!.favourite
-           try! context.save()
-           context.refresh(container, mergeChanges: false)
-            if (container.favourite == true) {
+            container.favourite = !(indivRecipe?.favourite ?? false)
+            
+            do {
+                try context.save()
+                context.refresh(container, mergeChanges: false)
+            } catch {
+                // Handle the error appropriately
+                print("Error saving context: \(error)")
+                return
+            }
+            
+            if container.favourite == true {
                 favImage = UIImage(named: "heart.png")
             } else {
                 favImage = UIImage(named: "unheart.png")
             }
-            let resizedImage = favImage!.resizeImage()
-            recipeFav.setImage(resizedImage, for: UIControl.State.normal)
+            let resizedImage = favImage?.resizeImage()
+            recipeFav.setImage(resizedImage, for: .normal)
         }
     }
 }

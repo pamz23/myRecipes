@@ -57,8 +57,6 @@ class RecipeListingViewController: UIViewController {
 
 }
 
-
-
 extension RecipeListingViewController: UITableViewDelegate { }
 
 extension RecipeListingViewController: UITableViewDataSource {
