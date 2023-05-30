@@ -16,15 +16,15 @@ struct User: Codable {
 
 class SignUpViewController: UIViewController {
 
+    //Outlets for textfields
     @IBOutlet weak var yourName: UITextField!
     @IBOutlet weak var yourEmail: UITextField!
     @IBOutlet weak var youPassword: UITextField!
     @IBOutlet weak var signUp: UIButton!
 
-    //an array of dicstionaries - each dictionary represents a user with string keys and values
+    //an array of dicstionaries for userdata - each dictionary represents a user with string keys and values
     var users: [[String: String]] = []
 
-    //optional instance of the user struct
     var currentUser: User?
 
     override func viewDidLoad() {

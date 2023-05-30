@@ -11,7 +11,7 @@ import UIKit
 
 class settingViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    //declaring properties
+    //Outlets for buttons/imgview
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var profilePhotoImgView: UIImageView!
     @IBOutlet weak var changeNameBtn: UIButton!
@@ -120,13 +120,13 @@ class settingViewController: UIViewController, UIImagePickerControllerDelegate, 
 
     //Dark mode toggle - depending on the value of the UISwitch, either toggle dark/light theme application wide.
     @IBAction func darkModeSwitchToggled(_ sender: UISwitch) {
-        if sender.isOn {
+        if sender.isOn { //Dark mode enabled
             if let window = UIApplication.shared.windows.first {
-                window.overrideUserInterfaceStyle = .dark
+                window.overrideUserInterfaceStyle = .dark //set UI to dark
             }
-        } else {
+        } else { //Dark mode disabled
             if let window = UIApplication.shared.windows.first {
-                window.overrideUserInterfaceStyle = .light
+                window.overrideUserInterfaceStyle = .light //set UI to light
             }
         }
 

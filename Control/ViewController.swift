@@ -9,14 +9,16 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    //declaring properties
+    //Outlets for Buttons
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
-    //overriding the method from the UIViewController class
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Hide back button on viewController
         navigationItem.setHidesBackButton(true, animated: true)
+        
     }
     
 }
